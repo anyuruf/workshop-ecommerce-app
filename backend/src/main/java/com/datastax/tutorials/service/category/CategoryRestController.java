@@ -96,7 +96,7 @@ public class CategoryRestController {
     })
     public ResponseEntity<Stream<Category>> findCategoriesFromParentId(
             HttpServletRequest req, 
-            @PathVariable(value = "parentid")
+            @PathVariable
             @Parameter(name = "parentid", description = "Parent identifier", example = "ffdac25a-0244-4894-bb31-a0884bc82aa9")
             UUID parentid) {
         // Get the partition (be careful unicity is here not ensured

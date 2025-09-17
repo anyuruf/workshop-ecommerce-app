@@ -174,7 +174,7 @@ public class UserRestController {
     	                description = "Internal server error.") 
     	    })
     public ResponseEntity<User> getUser(HttpServletRequest req, 
-            @PathVariable(value = "userid")
+            @PathVariable
             @Parameter(name = "userid", description = "user identifier (UUID)", example = "5929e846-53e8-473e-8525-80b666c46a83")
             UUID userid) {
 
@@ -210,7 +210,7 @@ public class UserRestController {
     	                description = "Internal server error.") 
     	    })
     public ResponseEntity<User> getUserByEmail(HttpServletRequest req, 
-            @PathVariable(value = "email")
+            @PathVariable
             @Parameter(name = "email", description = "email address", example = "bob.slydell@bobsconsulting.com")
             String email) {
 
@@ -260,7 +260,7 @@ public class UserRestController {
     public ResponseEntity<User> createUser(
             HttpServletRequest req, 
             @RequestBody User userData,
-            @PathVariable(value = "userid")
+            @PathVariable
             @Parameter(name = "userid", description = "user identifier (UUID)",
                        example = "5929e846-53e8-473e-8525-80b666c46a83")
             UUID userid) {
@@ -350,7 +350,7 @@ public class UserRestController {
     public ResponseEntity<User> updateUser(
             HttpServletRequest req, 
             @RequestBody User userData,
-            @PathVariable(value = "userid")
+            @PathVariable
             @Parameter(name = "userid", description = "user identifier (UUID)",
                        example = "5929e846-53e8-473e-8525-80b666c46a83")
             UUID userid) {
@@ -467,7 +467,7 @@ public class UserRestController {
     public ResponseEntity<User> loginUser(
             HttpServletRequest req, 
             @RequestBody Password passwordData,
-            @PathVariable(value = "userid")
+            @PathVariable
             @Parameter(name = "userid", description = "user identifier (UUID)",
                        example = "5929e846-53e8-473e-8525-80b666c46a83")
             UUID userid) {
@@ -540,7 +540,7 @@ public class UserRestController {
     public ResponseEntity<User> updateUserPassword(
             HttpServletRequest req, 
             @RequestBody Password passwordData,
-            @PathVariable(value = "userid")
+            @PathVariable
             @Parameter(name = "userid", description = "user identifier (UUID)",
                        example = "5929e846-53e8-473e-8525-80b666c46a83")
             UUID userid) {

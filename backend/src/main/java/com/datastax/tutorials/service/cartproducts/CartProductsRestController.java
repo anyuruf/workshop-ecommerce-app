@@ -90,7 +90,7 @@ public class CartProductsRestController {
     })
     public ResponseEntity<Stream<CartProduct>> findAllByCartId(
             HttpServletRequest req, 
-            @PathVariable(value = "cartid")
+            @PathVariable
             @Parameter(name = "cartid", description = "cart identifier (UUID)", example = "5929e846-53e8-473e-8525-80b666c46a83")
             UUID cartid) {
     	List<CartProductEntity> e = cartProductsRepo.findByKeyCartId(cartid);
@@ -138,10 +138,10 @@ public class CartProductsRestController {
     public ResponseEntity<Stream<CartProduct>> addProductToCart(
             HttpServletRequest req, 
             @RequestBody CartProduct product,
-            @PathVariable(value = "cartid")
+            @PathVariable
             @Parameter(name = "cartid", description = "cart identifier (UUID)", example = "5929e846-53e8-473e-8525-80b666c46a83")
             UUID cartid,
-            @PathVariable(value = "productid")
+            @PathVariable
             @Parameter(name = "productid", description = "product identifier", example = "LSS123XL")
             String productid) {
 
@@ -200,10 +200,10 @@ public class CartProductsRestController {
     })
     public ResponseEntity<Stream<CartProduct>> removeProductFromCart (
     		HttpServletRequest req,
-            @PathVariable(value = "cartid")
+            @PathVariable
             @Parameter(name = "cartid", description = "cart identifier (UUID)", example = "5929e846-53e8-473e-8525-80b666c46a83")
             UUID cartid,
-            @PathVariable(value = "productid")
+            @PathVariable
             @Parameter(name = "productid", description = "productid identifier", example = "LSS123XL")
             String productid) {
     	

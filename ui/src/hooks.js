@@ -3,7 +3,7 @@ import useSWR from "swr";
 import { v4 as uuidv4 } from "uuid";
 import _ from "lodash";
 
-const TOP_LEVEL_CATEGORY_UUID = "ffdac25a-0244-4894-bb31-a0884bc82aa9";
+const TOP_LEVEL_CATEGORY_UUID = "017fe537-bb13-7c35-b52a-cb5490cce7be";
 const FEATURED_CATEGORY_ID = "202112";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());

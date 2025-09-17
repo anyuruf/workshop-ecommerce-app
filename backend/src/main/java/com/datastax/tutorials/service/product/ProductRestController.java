@@ -67,7 +67,7 @@ public class ProductRestController {
             @ApiResponse(responseCode = "500", description = "Technical Internal error.")}
     )
     public ResponseEntity<Product> findByProductId(HttpServletRequest req,
-            @PathVariable(value = "productid") 
+            @PathVariable 
             @Parameter(name = "productid", description = "Product identifier", example = "LS5342XL") 
             String productid) {
         Optional<ProductEntity> pe = productRepo.findById(productid);

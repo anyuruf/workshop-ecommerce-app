@@ -167,7 +167,7 @@ public class OrderRestController {
     })
     public ResponseEntity<OrderResponse> findOrderById(
             HttpServletRequest req, 
-            @PathVariable(value = "orderid")
+            @PathVariable
             @Parameter(name = "orderid", description = "order identifier (UUID)", example = "5929e846-53e8-173e-8525-80b666c46a83")
             UUID orderid) {
     	
@@ -248,7 +248,7 @@ public class OrderRestController {
     })
     public ResponseEntity<Stream<List<OrderByUser>>> findOrdersByUserId(
             HttpServletRequest req, 
-            @PathVariable(value = "userid")
+            @PathVariable
             @Parameter(name = "userid", description = "user identifier (UUID)", example = "5929e846-53e8-473e-8525-80b666c46a83")
             UUID userid) {
     	
@@ -293,7 +293,7 @@ public class OrderRestController {
     public ResponseEntity<OrderRequest> placeOrder(
             HttpServletRequest req,
             @RequestBody OrderRequest order,
-            @PathVariable(value = "userid")
+            @PathVariable
             @Parameter(name = "userid", description = "user identifier (UUID)", example = "5929e846-53e8-473e-8525-80b666c46a83")
             UUID userid) {
     	
@@ -457,7 +457,7 @@ public class OrderRestController {
          description = "Internal error.")
     })
     public ResponseEntity<Stream<OrderStatusHistory>> findOrderStatusHistory(
-            @PathVariable(value = "orderid")
+            @PathVariable
             @Parameter(name = "orderid", description = "order identifier (UUID)", example = "5929e846-53e8-473e-8525-80b666c46a83")
             UUID orderid) {
     	Optional<OrderStatusHistoryEntity> e = orderStatusRepo.findByKeyOrderId(orderid);
@@ -499,10 +499,10 @@ public class OrderRestController {
     })
     @Transactional
     public ResponseEntity<OrderStatusHistory> cancelOrder(
-            @PathVariable(value = "orderid")
+            @PathVariable
             @Parameter(name = "orderid", description = "order identifier (UUID)", example = "5929e846-53e8-173e-8525-80b666c46a83")
             UUID orderid,
-    		@PathVariable(value = "userid")
+    		@PathVariable
             @Parameter(name = "userid", description = "user identifier (UUID)", example = "5929e846-53e8-473e-8525-80b666c46a83")
             UUID userid) {
     	

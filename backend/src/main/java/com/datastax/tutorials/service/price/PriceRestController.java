@@ -96,7 +96,7 @@ public class PriceRestController {
     })
     public ResponseEntity<Stream<Price>> findAllByProductId(
             HttpServletRequest req, 
-            @PathVariable(value = "productid")
+            @PathVariable
             @Parameter(name = "productid", description = "Product identifier", example = "LS5342XL")
             String productid) {
         // Get the partition (be careful unicity is here not ensured
@@ -131,7 +131,7 @@ public class PriceRestController {
                 description = "Technical Internal error.") 
     })    
     public ResponseEntity<Price> findByProductId(HttpServletRequest req, 
-            @PathVariable(value = "productid")
+            @PathVariable
             @Parameter(name = "productid", description = "Product identifier", example = "LS5342XL")
             String productid) {
         return findByProductIdAndStoreId(req, productid, DEFAULT_STORE_ID);
@@ -161,10 +161,10 @@ public class PriceRestController {
                 description = "Technical Internal error.") 
     })
     public ResponseEntity<Price> findByProductIdAndStoreId(HttpServletRequest req, 
-            @PathVariable(value = "productid")
+            @PathVariable
             @Parameter(name = "productid", description = "Product identifier", example = "LS5342XL")
             String productid,
-            @PathVariable(value = "storeId")
+            @PathVariable
             @Parameter(name = "storeId", description = "Store identifier", example = "web")
             String storeId) {
         Optional<PriceEntity> pe = 

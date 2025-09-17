@@ -9,7 +9,7 @@ import com.datastax.oss.driver.api.core.CqlSession;
 import com.dtsx.astra.sdk.db.domain.Database;
 
 @SpringBootTest
-public class Test01_Connectivity {
+class Test01_Connectivity {
 
     @Autowired
     private AstraClient astraClient;

@@ -12,9 +12,9 @@ import io.swagger.v3.oas.models.servers.Server;
 
 @Configuration
 public class OpenApiDocumentationConfig implements WebMvcConfigurer {
-    
+
     @Bean
-    public OpenAPI openApiSpec() {
+    OpenAPI openApiSpec() {
         return new OpenAPI().addServersItem(new Server().url("/")).info(
                 new Info()
                     .title("DevWorkshop :: ECommerce Backend")

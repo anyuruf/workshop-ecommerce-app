@@ -1,11 +1,11 @@
 server:
-  port: 8080
+  port: 8035
   error:
     include-stacktrace: always
 
 spring:
   application:
-    name: ecom
+    name: ecommerce-anyuruf
   profiles:
     active: default
   security:

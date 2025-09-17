@@ -94,7 +94,7 @@ public class UserCartsRestController {
     })
     public ResponseEntity<Stream<UserCart>> findAllByUserId(
             HttpServletRequest req, 
-            @PathVariable(value = "userid")
+            @PathVariable
             @Parameter(name = "userid", description = "user identifier (UUID)", example = "5929e846-53e8-473e-8525-80b666c46a83")
             UUID userid) {
         // Get the partition (be careful uniqueness is here not ensured
@@ -140,7 +140,7 @@ public class UserCartsRestController {
     })
     public ResponseEntity<Stream<UserCart>> findActiveCartByUserId(
             HttpServletRequest req, 
-            @PathVariable(value = "userid")
+            @PathVariable
             @Parameter(name = "userid", description = "user identifier (UUID)", example = "5929e846-53e8-473e-8525-80b666c46a83")
             UUID userid) {
     	// Create two lists of UserCartEntity
