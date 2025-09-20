@@ -42,3 +42,7 @@ astra:
           set-keyspace-timeout: 10s
         control-connection:
           timeout: 10s
+logging:
+  level:
+    '[org.springframework.security]': DEBUG
+
