@@ -1,5 +1,6 @@
 package com.datastax.tutorials.service.category;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
@@ -12,8 +13,9 @@ import org.springframework.data.cassandra.core.mapping.Table;
 @Table("category")
 public class CategoryEntity implements Serializable {
 
-    /** Serial. */
-    private static final long serialVersionUID = 4504093417018484534L;
+	/** Serial. */
+	@Serial
+	private static final long serialVersionUID = 4504093417018484534L;
     
     @PrimaryKey
     private CategoryPrimaryKey key;

@@ -1,5 +1,6 @@
 package com.datastax.tutorials.service.order;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import org.springframework.data.cassandra.core.mapping.Column;
@@ -9,6 +10,7 @@ import org.springframework.data.cassandra.core.mapping.Table;
 @Table("order_status_history")
 public class OrderStatusHistoryEntity implements Serializable {
 
+	@Serial
 	private static final long serialVersionUID = 5329800173538611720L;
 
 	@PrimaryKey

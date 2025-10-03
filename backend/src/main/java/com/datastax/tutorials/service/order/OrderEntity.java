@@ -1,5 +1,6 @@
 package com.datastax.tutorials.service.order;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -14,6 +15,7 @@ import com.datastax.tutorials.service.user.AddressEntity;
 @Table("order_by_id")
 public class OrderEntity implements Serializable {
 
+	@Serial
 	private static final long serialVersionUID = 5140291715224864748L;
 
 	@PrimaryKey

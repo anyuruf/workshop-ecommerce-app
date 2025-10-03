@@ -1,5 +1,6 @@
 package com.datastax.tutorials.service.user;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -13,6 +14,7 @@ import org.springframework.data.cassandra.core.mapping.Table;
 @Table("user")
 public class UserEntity implements Serializable {
 
+	@Serial
 	private static final long serialVersionUID = 4067531918643498429L;
 	
 	@PrimaryKey("user_id")

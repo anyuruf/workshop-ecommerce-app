@@ -1,6 +1,7 @@
 package com.datastax.tutorials.service.user;
 
 import java.util.UUID;
+import java.io.Serial;
 import java.io.Serializable;
 
 import org.springframework.data.cassandra.core.mapping.Column;
@@ -10,6 +11,7 @@ import org.springframework.data.cassandra.core.mapping.Table;
 @Table("user_by_email")
 public class UserByEmailEntity implements Serializable {
 
+	@Serial
 	private static final long serialVersionUID = -5194633590859436467L;
 
 	@PrimaryKey("user_email")

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.pulsar.client.api.AuthenticationFactory;
 import org.apache.pulsar.client.api.Producer;
@@ -514,7 +514,7 @@ public class OrderRestController {
     	orderBUKey.setOrderId(orderid);
     	Optional<OrderByUserEntity> orderByUserO = orderUserRepo.findById(orderBUKey);
     	
-    	if (!orderByUserO.isPresent()) {
+    	if (orderByUserO.isEmpty()) {
     		// that combination of userid an orderid was not valid
     		return ResponseEntity.notFound().build();
     	} else {

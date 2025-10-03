@@ -1,5 +1,6 @@
 package com.datastax.tutorials.service.product;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Map;
 import java.util.Set;
@@ -29,9 +30,9 @@ import org.springframework.data.cassandra.core.mapping.Table;
  */
 @Table("product")
 public class ProductEntity implements Serializable {
-    
-    /** Serial. */
-    private static final long serialVersionUID = 2835469764140679456L;
+	/** Serial. */
+	@Serial
+	private static final long serialVersionUID = 2835469764140679456L;
 
     @PrimaryKey("product_id")
     @CassandraType(type = Name.TEXT)

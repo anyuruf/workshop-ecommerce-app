@@ -1,6 +1,6 @@
 package com.datastax.tutorials.config;
 
-import static org.springdoc.core.Constants.SWAGGER_UI_PATH;
+import static org.springdoc.core.utils.Constants.SWAGGER_UI_PATH;
 import static org.springframework.web.servlet.view.UrlBasedViewResolver.REDIRECT_URL_PREFIX;
 
 import java.net.HttpURLConnection;

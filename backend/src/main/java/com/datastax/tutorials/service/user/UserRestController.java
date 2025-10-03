@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -104,7 +104,7 @@ public class UserRestController {
     	String email = principal.getAttribute("email");
     	Optional<UserByEmailEntity> existingUser = userByEmailRepo.findById(email);
     	
-    	if (!existingUser.isPresent()) {
+    	if (existingUser.isEmpty()) {
     		// If not, create new!
     		user = new UserEntity();
     		// need a userId, but we also need a way to get/transfer the one from the website
@@ -134,7 +134,7 @@ public class UserRestController {
 	    	userId = existingUser.get().getUserId();
 	        Optional<UserEntity> userO = userRepo.findById(userId);
 	        
-	        if (!userO.isPresent()) {
+	        if (userO.isEmpty()) {
 	        	// catch-all, if for whatever reason a valid userId can't yield an existing user
 	            return ResponseEntity.notFound().build();
 	        	
@@ -220,7 +220,7 @@ public class UserRestController {
     		// now pull the user data 
 	        Optional<UserEntity> user = userRepo.findById(userByEmail.get().getUserId());
 	        
-	        if (!user.isPresent()) {
+	        if (user.isEmpty()) {
 	        	// extra bullet proofing, just in case user is null (for whatever reason)
 	            return ResponseEntity.notFound().build();
 	        }
@@ -271,7 +271,7 @@ public class UserRestController {
     	//check if this is a returning user
     	Optional<UserByEmailEntity> existingUser = userByEmailRepo.findById(userEmail);
     	
-    	if (!existingUser.isPresent()) {
+    	if (existingUser.isEmpty()) {
     		// If not, create new!
     		
 	    	// Hash the password from the request body

@@ -1,5 +1,6 @@
 package com.datastax.tutorials.service.cartproducts;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import org.springframework.data.cassandra.core.mapping.CassandraType;
@@ -11,6 +12,7 @@ import org.springframework.data.cassandra.core.mapping.CassandraType.Name;
 @Table("cart_products")
 public class CartProductEntity implements Serializable {
 
+	@Serial
 	private static final long serialVersionUID = -8746649804590601031L;
 
 	@PrimaryKey

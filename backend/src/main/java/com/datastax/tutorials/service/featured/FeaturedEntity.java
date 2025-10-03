@@ -1,5 +1,6 @@
 package com.datastax.tutorials.service.featured;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -13,9 +14,10 @@ import org.springframework.data.cassandra.core.mapping.Table;
 public class FeaturedEntity implements Serializable {
 
 	/**
-     * Serial.
-     */
-    private static final long serialVersionUID = -8646621243907313642L;
+	* Serial.
+	*/
+	@Serial
+	private static final long serialVersionUID = -8646621243907313642L;
 
     @PrimaryKey
 	private FeaturedPrimaryKey key;
