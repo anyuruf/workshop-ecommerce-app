@@ -4,15 +4,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.datastax.astra.sdk.AstraClient;
 import com.datastax.oss.driver.api.core.CqlSession;
-import com.dtsx.astra.sdk.db.domain.Database;
 
 @SpringBootTest
 class Test01_Connectivity {
 
-    @Autowired
-    private AstraClient astraClient;
     
     @Autowired
     private CqlSession cqlSession;
@@ -20,11 +16,8 @@ class Test01_Connectivity {
     @Test
     void should_display_astraClient() {
         System.out.println("List Databases available in your Organization (AstraClient)");
-        System.out.println("+ Your OrganizationID: " + astraClient.apiDevops().getOrganizationId());
+        System.out.println("+ Your OrganizationID: " + cqlSession.getMetadata());
         System.out.println("+ Your Databases: ");
-        astraClient.apiDevopsDatabases()
-                   .findAll()
-                   .forEach(this::displayDB);
     }
     
     @Test
@@ -36,10 +29,6 @@ class Test01_Connectivity {
                 .all().stream()
                 .map(r -> r.getString("name"))
                 .forEach(System.out::println);
-    }
-    
-    private void displayDB(Database db) {
-        System.out.println(db.getInfo().getName() + "\t : id=" + db.getId() + ", region=" + db.getInfo().getRegion());
     }
     
 }
