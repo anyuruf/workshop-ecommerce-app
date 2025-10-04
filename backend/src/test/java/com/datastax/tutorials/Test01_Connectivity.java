@@ -20,10 +20,10 @@ class Test01_Connectivity {
     @Test
     void should_display_astraClient() {
         System.out.println("List Databases available in your Organization (AstraClient)");
-        System.out.println("+ Your OrganizationID: " + astraClient.apiDevopsOrganizations().organizationId());
+        System.out.println("+ Your OrganizationID: " + astraClient.apiDevops().getOrganizationId());
         System.out.println("+ Your Databases: ");
         astraClient.apiDevopsDatabases()
-                   .databasesNonTerminated()
+                   .findAll()
                    .forEach(this::displayDB);
     }
     
