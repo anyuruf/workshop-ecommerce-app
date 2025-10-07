@@ -55,7 +55,7 @@ public class SecurityConfig {
                     "/swagger-resources/**",
                     "/swagger-ui.html"
                 ).permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
                 // If you wanted all requests open:
                 // .anyRequest().permitAll()
             )
