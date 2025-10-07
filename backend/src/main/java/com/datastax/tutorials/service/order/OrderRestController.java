@@ -178,7 +178,7 @@ public class OrderRestController {
 	    	OrderResponse order = new OrderResponse();
 	
 	    	// key columns
-	    	OrderEntity firstResult = entityList.get(0);
+	    	OrderEntity firstResult = entityList.getFirst();
 	    	OrderPrimaryKey key = firstResult.getKey();
 	    	order.setOrderId(key.getOrderId());
 	    	// payload columns
@@ -525,7 +525,7 @@ public class OrderRestController {
 	    	if (currentStatus.getStatusOrdinal() < OrderStatusEnum.SHIPPED.getStatusOrdinal()) {
 	    		// pull full order detail
 	    		// order_status is a STATIC column, so we just need to set it on one row (the first)
-	    		OrderEntity orderE = orderRepo.findByKeyOrderId(orderid).get(0);
+	    		OrderEntity orderE = orderRepo.findByKeyOrderId(orderid).getFirst();
 	    		// set status
 	    		
 	    		orderE.setOrderStatus(CANCELLED_ORDER_STATUS.name());

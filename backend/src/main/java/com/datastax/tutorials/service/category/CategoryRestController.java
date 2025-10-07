@@ -140,7 +140,7 @@ public class CategoryRestController {
         if (categories.size() > 1) {
             return ResponseEntity.badRequest().build();
         }
-        return ResponseEntity.ok(mapCategory(categories.get(0)));
+        return ResponseEntity.ok(mapCategory(categories.getFirst()));
     }       
      
     /**
