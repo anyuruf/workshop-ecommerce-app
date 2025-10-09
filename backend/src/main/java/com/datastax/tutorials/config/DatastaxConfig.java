@@ -12,10 +12,15 @@ public class DatastaxConfig {
     
     @Value("${datastax.astra.secure-connect-bundle}")
     private File cloudSecureBundle;
+    @Value("${datastax.astra.token}")
+    private String astraToken;
+    
     
     @Bean
     CqlSessionBuilderCustomizer sessionBuilderCustomizer() {
-        return builder -> builder.withCloudSecureConnectBundle(cloudSecureBundle.toPath());
+        return builder -> builder
+        		.withCloudSecureConnectBundle(cloudSecureBundle.toPath())
+        		.withAuthCredentials("token", astraToken);
     }
     
 }

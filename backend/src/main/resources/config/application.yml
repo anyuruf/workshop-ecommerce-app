@@ -21,10 +21,28 @@ spring:
             authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
             token-uri: https://oauth2.googleapis.com/token
             user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
-    
+  pulsar:
+    defaults:
+        topic:
+            tenant: ${ASTRA_STREAM_TENANT}
+            namespace: default
+    client:
+      service-url: ${ASTRA_STREAM_URL}
+      authentication:
+                   plugin-class-name: org.apache.pulsar.client.impl.auth.AuthenticationToken
+                   param:
+                     token: ${ASTRA_STREAM_TOKEN}
+      failover:
+        delay: 30s
+        switch-back-delay: 15s
+        check-interval: 1s
+
 datastax:
-  astra:
-    secure-connect-bundle: ${ASTRA_BUNDLE:${user.home}/.astra/secure-connect-demo.zip}
+    astra:
+        username: ${ASTRA_DB_ID}
+        token: ${ASTRA_DB_APP_TOKEN}
+        secure-connect-bundle: ${ASTRA_BUNDLE:${user.home}/.astra/secure-connect-demo.zip}
+
       
 logging:
   level:
