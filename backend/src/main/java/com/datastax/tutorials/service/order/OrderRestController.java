@@ -23,7 +23,9 @@ import org.apache.pulsar.client.api.Producer;
 import org.apache.pulsar.client.api.PulsarClient;
 import org.apache.pulsar.client.api.PulsarClientException;
 import org.apache.pulsar.shade.com.google.gson.Gson;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.pulsar.core.PulsarTemplate;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -69,9 +71,8 @@ public class OrderRestController {
 	private OrderStatusHistoryRepository orderStatusRepo;
 	private UserCartsRepository userCartRepo;
 	private CartProductsRepository cartProductsRepo;
-	
-	private PulsarClient client;
-	private Producer<byte[]> orderProducer;
+	private final PulsarTemplate<OrderRequest> pulsarTemplate;
+	private static final String ORDER_TOPIC = "pending-orders";
 	
 	// assuming standard shipping and handling of $4.00 US
 	private static final BigDecimal SHIPPING_HANDLING = new BigDecimal(4.00);
@@ -85,51 +86,19 @@ public class OrderRestController {
 	// setting default order status to PENDING
 	private static final OrderStatusEnum NEW_ORDER_STATUS = OrderStatusEnum.PENDING;
 	
-	private static final String SERVICE_URL = System.getenv("ASTRA_STREAM_URL");
-	private static final String YOUR_PULSAR_TOKEN = System.getenv("ASTRA_STREAM_TOKEN");
-	private static final String STREAMING_TENANT = System.getenv("ASTRA_STREAM_TENANT");
-	private static final String STREAMING_PREFIX = STREAMING_TENANT + "/default/";
-	private static final String PENDING_ORDER_TOPIC = "persistent://" + STREAMING_PREFIX + "pending-orders";
+	// Pulsar Template
+	
 	
 	public OrderRestController(OrderRepository oRepo,OrderByUserRepository oURepo,
 			OrderStatusHistoryRepository oSHRepo,UserCartsRepository uCRepo,
-			CartProductsRepository cPRepo) {
+			PulsarTemplate<OrderRequest> pulsarTemplate, CartProductsRepository cPRepo) {
 
+		this.pulsarTemplate = pulsarTemplate;
 		orderRepo = oRepo;
 		orderUserRepo = oURepo;
 		orderStatusRepo = oSHRepo;
 		userCartRepo = uCRepo;
 		cartProductsRepo = cPRepo;
-        
-		// Create Pulsar/Astra Streaming client
-		try {
-			if (YOUR_PULSAR_TOKEN == null) {
-				// run without auth ... local Pulsar
-				client = PulsarClient.builder()
-				        .serviceUrl(SERVICE_URL)
-				        .build();
-			} else {
-				client = PulsarClient.builder()
-				        .serviceUrl(SERVICE_URL)
-				        .authentication(
-				            AuthenticationFactory.token(YOUR_PULSAR_TOKEN)
-				        )
-				        .build();
-			}
-		} catch (PulsarClientException e) {
-			// issue building the client stream connection
-			e.printStackTrace();
-		}
-
-        // Create producer on a topic
-        try {
-			orderProducer = client.newProducer()
-			        .topic(PENDING_ORDER_TOPIC)
-			        .create();
-		} catch (PulsarClientException e) {
-			// issue creating the streaming message producer
-			e.printStackTrace();
-		}
 	}
 
     /**
@@ -404,10 +373,9 @@ public class OrderRestController {
     	//order.setOrderStatus(NEW_ORDER_STATUS.name());
     	order.setOrderTimestamp(orderTimeStamp);
     	
-    	// put on Pulsar topic!
-    	String orderJSON = new Gson().toJson(order);
+    	
 		try {
-			sendToOrderStream(orderJSON);
+			sendToOrderStream(order);
 		} catch (Exception e) {
 			try {
 				// Try putting it on the error'd-orders topic
@@ -555,9 +523,13 @@ public class OrderRestController {
     	}
     }
     
-    private void sendToOrderStream(String message) throws Exception {
+    private void sendToOrderStream( OrderRequest order) throws Exception {
         // Send a message to the topic
-        orderProducer.send(message.getBytes());
+    	
+    		pulsarTemplate.newMessage(order)
+            .withTopic(ORDER_TOPIC)
+            .send();
+   
     }
  
     private List<OrderByUser> mapOrderByUser(List<OrderByUserEntity> entityList) {
@@ -671,13 +643,5 @@ public class OrderRestController {
     
     private static long getTimeFromUUID(UUID uuid) {
       return (uuid.timestamp() - NUM_100NS_INTERVALS_SINCE_UUID_EPOCH) / 10000;
-    }
-
-    protected void finalize() throws PulsarClientException {
-        // Close the stream producer
-        orderProducer.close();
-        
-        // Close the stream client
-        client.close();
     }
 }

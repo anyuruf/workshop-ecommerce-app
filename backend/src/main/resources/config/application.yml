@@ -4,10 +4,19 @@ server:
     include-stacktrace: always
 
 spring:
+  cassandra:
+    schema-action: create_if_not_exists
+    request:
+        timeout: 10s
+    connection:
+        connect-timeout: 10s
+        init-query-timeout: 10s
+    local-datacenter: datacenter1
+    keyspace-name: ecommerce
   application:
     name: ecommerce-anyuruf
   profiles:
-    active: default
+    active: dev
   security:
     oauth2:
       client:
@@ -21,11 +30,44 @@ spring:
             authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
             token-uri: https://oauth2.googleapis.com/token
             user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
-    
-datastax:
-  astra:
-    secure-connect-bundle: ${ASTRA_BUNDLE:${user.home}/.astra/secure-connect-demo.zip}
-      
+
+
+#astra:
+#  api:
+#    client-id: ${ASTRA_DB_CLIENT_ID}
+#    client-secret: ${ASTRA_DB_CLIENT_SECRET}
+#    application-token: ${ASTRA_DB_APP_TOKEN}
+#    database-id: ${ASTRA_DB_ID}
+#    cloud-region: ${ASTRA_DB_REGION}
+#    grpc:
+#      enabled: true
+#  cql:
+#    enabled: true
+#    download-scb: 
+#      # if disabled zip files must be in folder (path)
+#      enabled: true
+#      # Looking for files scb_dbid-dbregion.zip in folder (default is ~/.astra/scb)
+#      # path: /tmp
+#    driver-config:
+#      basic:
+#        session-keyspace: ${ASTRA_DB_KEYSPACE}
+
+pulsar:
+    defaults:
+        topic:
+            tenant: ${ASTRA_STREAM_TENANT}
+            namespace: default
+    client:
+      service-url: ${ASTRA_STREAM_URL}
+      authentication:
+                   plugin-class-name: org.apache.pulsar.client.impl.auth.AuthenticationToken
+                   param:
+                     token: ${ASTRA_STREAM_TOKEN}
+      failover:
+        delay: 30s
+        switch-back-delay: 15s
+        check-interval: 1s
+
 logging:
   level:
     '[org.springframework.security]': DEBUG

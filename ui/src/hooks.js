@@ -5,9 +5,8 @@ import _ from "lodash";
 
 const TOP_LEVEL_CATEGORY_UUID = "017fe537-bb13-7c35-b52a-cb5490cce7be";
 const FEATURED_CATEGORY_ID = "202112";
-const API_BASE = process.env.REACT_APP_API_BASE_URL || "http://localhost:8035";
 
-const fetcher = (url) => fetch(`${API_BASE}${url}`,
+const fetcher = (url) => fetch(`${url}`,
   {
     credentials: "include",          // <---- important
   },

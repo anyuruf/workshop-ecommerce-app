@@ -70,18 +70,7 @@
         <spotless-maven-plugin.version>2.44.3</spotless-maven-plugin.version>
         <spring.profiles.active>dev</spring.profiles.active>
 	</properties>
-	  
-    <dependencyManagement>
-     <dependencies>
-        <dependency>
-          <groupId>org.apache.pulsar</groupId>
-          <artifactId>pulsar-bom</artifactId>
-          <version>${pulsar.version}</version>
-          <type>pom</type>
-          <scope>import</scope>
-        </dependency>
-     </dependencies>
-    </dependencyManagement>	  
+	   
 	<dependencies>
 		<!-- Rest API -->
 		<dependency>
@@ -89,10 +78,9 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>	
 		<dependency>
-          <groupId>org.apache.pulsar</groupId>
-          <artifactId>pulsar-client</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-pulsar</artifactId>
         </dependency>
-
 		<!-- Swagger -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
