@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { useAllCategories, useCurrentUser } from "../../hooks";
 import { Link } from "react-router-dom";
@@ -9,20 +9,32 @@ import {
 } from "@heroicons/react/outline";
 import { navigation } from "../../config";
 import { classNames } from "../../utils";
+import { AuthContext } from 'react-oauth2-code-pkce';
 
 const Navigation = () => {
   const { categories } = useAllCategories();
   const { data: currentUser } = useCurrentUser();
+  const { token, logIn, logOut } = useContext(AuthContext);
+
+  const isAuthenticated = Boolean(token) && currentUser;
+
+  const logOutHandle = event => {
+    logOut();
+  };
+
+  const logInHandle = event => {
+    logIn();
+  };
 
   return (
     <header className="relative bg-white">
-      <nav aria-label="Top" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Top" className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="border-b border-gray-200">
-          <div className="h-16 flex items-center justify-between">
-            <div className="flex-1 flex items-center lg:hidden">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center flex-1 lg:hidden">
               <a
                 href="/"
-                className="ml-2 p-2 text-gray-400 hover:text-gray-500"
+                className="p-2 ml-2 text-gray-400 hover:text-gray-500"
               >
                 <span className="sr-only">Search</span>
                 <SearchIcon className="w-6 h-6" aria-hidden="true" />
@@ -31,7 +43,7 @@ const Navigation = () => {
 
             {/* Flyout menus */}
             <Popover.Group className="hidden lg:flex-1 lg:block lg:self-stretch">
-              <div className="h-full flex space-x-8">
+              <div className="flex h-full space-x-8">
                 {navigation.categories.map((category) => (
                   <Popover key={category.name} className="flex">
                     {({ open }) => (
@@ -65,17 +77,17 @@ const Navigation = () => {
                           leaveFrom="opacity-100"
                           leaveTo="opacity-0"
                         >
-                          <Popover.Panel className="absolute z-10 top-full inset-x-0">
+                          <Popover.Panel className="absolute inset-x-0 z-10 top-full">
                             {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
                             <div
-                              className="absolute inset-0 top-1/2 bg-white shadow"
+                              className="absolute inset-0 bg-white shadow top-1/2"
                               aria-hidden="true"
                             />
 
                             <div className="relative bg-white">
-                              <div className="max-w-7xl mx-auto px-8">
-                                <div className="grid grid-cols-2 gap-y-10 gap-x-8 py-16">
-                                  <div className="grid grid-rows-1 grid-cols-2 gap-8 text-sm">
+                              <div className="px-8 mx-auto max-w-7xl">
+                                <div className="grid grid-cols-2 py-16 gap-y-10 gap-x-8">
+                                  <div className="grid grid-cols-2 grid-rows-1 gap-8 text-sm">
                                     {category.featured.map((item, itemIdx) => (
                                       <div
                                         key={item.name}
@@ -89,10 +101,10 @@ const Navigation = () => {
                                         <img
                                           src={item.imageSrc}
                                           alt={item.imageAlt}
-                                          className="object-center object-cover group-hover:opacity-75"
+                                          className="object-cover object-center group-hover:opacity-75"
                                         />
                                         <div className="flex flex-col justify-end">
-                                          <div className="p-4 bg-white bg-opacity-60 text-sm">
+                                          <div className="p-4 text-sm bg-white bg-opacity-60">
                                             <a
                                               href={item.href}
                                               className="font-medium text-gray-900"
@@ -114,7 +126,7 @@ const Navigation = () => {
                                       </div>
                                     ))}
                                   </div>
-                                  <div className="grid grid-cols-3 gap-y-10 gap-x-8 text-sm text-gray-500">
+                                  <div className="grid grid-cols-3 text-sm text-gray-500 gap-y-10 gap-x-8">
                                     {categories &&
                                       categories.map((category) => (
                                         <div key={category.categoryId}>
@@ -165,10 +177,10 @@ const Navigation = () => {
             {/* Logo */}
             <Link to="/" className="flex">
               <span className="sr-only">Astra E-Commerce</span>
-              <img className="h-8 w-auto" src="/favicon.ico" alt="" />
+              <img className="w-auto h-8" src="/favicon.ico" alt="" />
             </Link>
 
-            <div className="flex-1 flex items-center justify-end">
+            <div className="flex items-center justify-end flex-1">
               <a
                 href="/"
                 className="hidden text-gray-700 hover:text-gray-800 lg:flex lg:items-center"
@@ -176,13 +188,13 @@ const Navigation = () => {
                 <img
                   src="/images/flag-usa.svg"
                   alt=""
-                  className="w-6 h-auto block flex-shrink-0"
+                  className="flex-shrink-0 block w-6 h-auto"
                 />
-                <span className="ml-3 block text-sm font-medium">USD</span>
+                <span className="block ml-3 text-sm font-medium">USD</span>
                 <span className="sr-only">, change currency</span>
               </a>
 
-              {currentUser && (
+              {isAuthenticated && (
                 <Link
                   to="/user"
                   component="a"
@@ -194,56 +206,52 @@ const Navigation = () => {
               )}
 
               {/* Cart */}
-              <div className="ml-4 flow-root lg:ml-6">
+              <div className="flow-root ml-4 lg:ml-6">
                 <Link
                   to="/cart"
-                  className="group -m-2 p-2 flex items-center mr-4"
+                  className="flex items-center p-2 mr-4 -m-2 group"
                 >
                   <ShoppingBagIcon
-                    className="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
+                    className="flex-shrink-0 w-6 h-6 text-gray-400 group-hover:text-gray-500"
                     aria-hidden="true"
                   />
                   <span className="sr-only">items in cart, view bag</span>
                 </Link>
               </div>
-              {currentUser && (
+              {isAuthenticated && (
                 <>
                   <Link to="/orders">
                     <button
                       type="button"
-                      className="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-4"
+                      className="relative inline-flex items-center px-4 py-2 mr-4 text-sm font-medium border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                       <span>Orders</span>
                     </button>
                   </Link>
-                  <Link to="/logout">
                     <button
                       type="button"
-                      className="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-4"
+                      onClick={logOutHandle}
+                      className="relative inline-flex items-center px-4 py-2 mr-4 text-sm font-medium border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                       <span>Logout</span>
                     </button>
-                  </Link>
                 </>
               )}
-              {!currentUser && (
+              {!isAuthenticated && (
                 <>
-                  <Link to="/login">
                     <button
                       type="button"
-                      className="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-4"
+                      onClick={logInHandle}
+                      className="relative inline-flex items-center px-4 py-2 mr-4 text-sm font-medium border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                       <span>Login</span>
                     </button>
-                  </Link>
-                  <Link to="/signup">
                     <button
                       type="button"
-                      className="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-4"
+                      className="relative inline-flex items-center px-4 py-2 mr-4 text-sm font-medium text-white bg-green-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                       <span>Signup</span>
                     </button>
-                  </Link>
                 </>
               )}
             </div>
