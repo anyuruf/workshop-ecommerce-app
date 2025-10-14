@@ -34,7 +34,7 @@ const OrderHistory = () => {
               orders.map((order) => (
                 <div
                   key={order.order_id}
-                  className="bg-white border-t border-b border-gray-200 shadow-sm sm:rounded-lg sm:border"
+                  className="bg-white border-t border-b border-gray-200 shadow-xs sm:rounded-lg sm:border"
                 >
                   <div className="flex items-center p-4 border-b border-gray-200 sm:p-6 sm:grid sm:grid-cols-4 sm:gap-x-6">
                     <dl className="flex-1 grid grid-cols-2 gap-x-6 text-sm sm:col-span-3 sm:grid-cols-4 lg:col-span-3">
@@ -77,7 +77,7 @@ const OrderHistory = () => {
                     <div className="hidden lg:col-span-1 lg:flex lg:items-center lg:justify-end lg:space-x-4">
                       <Link
                         to={`/orders/${order.order_id}`}
-                        className="flex items-center justify-center bg-white py-2 px-2.5 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        className="flex items-center justify-center bg-white py-2 px-2.5 border border-gray-300 rounded-md shadow-xs text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       >
                         <span>View Order</span>
                       </Link>

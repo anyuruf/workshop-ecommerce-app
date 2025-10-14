@@ -27,7 +27,7 @@ const OrderDetail = () => {
       <div className="mt-16">
         <div className="max-w-7xl mx-auto sm:px-2 lg:px-8">
           <div className="max-w-2xl mx-auto space-y-8 sm:px-4 lg:max-w-4xl lg:px-0">
-            <div className="bg-white border-t border-b border-gray-200 shadow-sm sm:rounded-lg sm:border">
+            <div className="bg-white border-t border-b border-gray-200 shadow-xs sm:rounded-lg sm:border">
               <div className="flex items-center p-4 border-b border-gray-200 sm:p-6 sm:grid sm:grid-cols-4 sm:gap-x-6">
                 <dl className="flex-1 grid grid-cols-2 gap-x-6 text-sm sm:col-span-3 sm:grid-cols-4 lg:col-span-4">
                   <div>

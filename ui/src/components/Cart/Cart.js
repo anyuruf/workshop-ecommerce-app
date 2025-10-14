@@ -92,7 +92,7 @@ const Cart = () => {
             <ul className="border-t border-b border-gray-200 divide-y divide-gray-200">
               {cart.map((cartItem, index) => (
                 <li key={index} className="flex py-6">
-                  <div className="flex-shrink-0">
+                  <div className="shrink-0">
                     <img
                       src={`/images/${cartItem.product.images[0]}`}
                       alt={cartItem.product.name}
@@ -123,7 +123,7 @@ const Cart = () => {
                     <div className="mt-4 flex-1 flex items-end justify-between">
                       <p className="flex items-center text-sm text-gray-700 space-x-2">
                         <CheckIcon
-                          className="flex-shrink-0 h-5 w-5 text-green-500"
+                          className="shrink-0 h-5 w-5 text-green-500"
                           aria-hidden="true"
                         />
                         <span>In stock</span>
@@ -171,7 +171,7 @@ const Cart = () => {
               {currentUser && (
                 <button
                   onClick={placeOrder}
-                  className="w-full bg-indigo-600 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500"
+                  className="w-full bg-indigo-600 border border-transparent rounded-md shadow-xs py-3 px-4 text-base font-medium text-white hover:bg-indigo-700 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500"
                 >
                   Place Order
                 </button>
