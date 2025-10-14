@@ -55,11 +55,17 @@ export const useCategories = (category = TOP_LEVEL_CATEGORY_UUID) => {
 };
 
 export const useProducts = (categoryId) => {
-  const path = categoryId
-    ? `/api/v1/categories/${categoryId}`
-    : `/api/v1/featured/${FEATURED_CATEGORY_ID}`;
+  const path = `/api/v1/categories/${categoryId}`;
   return useSWR(path, fetcher);
 };
+
+export const useFeaturedProducts = async () => {
+  const path = `http://localhost:8035/api/v1/featured/${FEATURED_CATEGORY_ID}`;
+  const data = await fetcher(path);
+  return data;
+   
+};
+
 
 export const useCategory = (parentId, categoryId) => {
   return useSWR(

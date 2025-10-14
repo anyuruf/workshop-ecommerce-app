@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { useCartId, useCart, useCurrentUser } from "../../hooks";
 import { useNavigate } from "react-router-dom";
 import { CheckIcon } from "@heroicons/react/solid";
-import NotFound from "../../components/NotFound";
-import Error from "../../components/Error";
-import Loading from "../../components/Loading";
+import NotFound from "../NotFound";
+import Error from "../Error";
+import Loading from "../Loading";
 import toast from "react-hot-toast";
 import _ from "lodash";
 

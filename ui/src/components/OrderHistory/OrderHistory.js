@@ -1,7 +1,7 @@
 import React from "react";
 import { useOrders } from "../../hooks";
-import Error from "../../components/Error";
-import Loading from "../../components/Loading";
+import Error from "../Error";
+import Loading from "../Loading";
 import { Link } from "react-router-dom";
 const { DateTime } = require("luxon");
 

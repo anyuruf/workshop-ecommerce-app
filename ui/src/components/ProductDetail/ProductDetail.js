@@ -4,9 +4,9 @@ import { useParams } from "react-router-dom";
 import { RadioGroup } from "@headlessui/react";
 import { CurrencyDollarIcon, GlobeIcon } from "@heroicons/react/outline";
 import { classNames } from "../../utils";
-import NotFound from "../../components/NotFound";
-import Error from "../../components/Error";
-import Loading from "../../components/Loading";
+import NotFound from "../NotFound";
+import Error from "../Error";
+import Loading from "../Loading";
 import toast from "react-hot-toast";
 
 const policies = [
