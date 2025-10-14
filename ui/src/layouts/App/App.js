@@ -1,12 +1,12 @@
 import { createBrowserRouter,  RouterProvider} from "react-router-dom";
-import ProductList from "../ProductList";
-import Cart from "../Cart";
+import ProductList from "../../components/ProductList";
+import Cart from "../../components/Cart";
 import Login from "../Login";
 import User from "../User";
 import Signup from "../Signup";
-import ProductDetail from "../ProductDetail";
-import OrderHistory from "../OrderHistory";
-import OrderDetail from "../OrderDetail";
+import ProductDetail from "../../components/ProductDetail";
+import OrderHistory from "../../components/OrderHistory";
+import OrderDetail from "../../components/OrderDetail";
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import { Toaster } from "react-hot-toast";
@@ -39,9 +39,5 @@ const App = () => {
       </>
   );
 };
-
-App.propTypes = {};
-
-App.defaultProps = {};
 
 export default App;
