@@ -118,7 +118,7 @@ const ProductDetail = () => {
                       value={option}
                       className={({ active, checked }) =>
                         classNames(
-                          "cursor-pointer focus:outline-none",
+                          "cursor-pointer focus:outline-hidden",
                           active ? "ring-2 ring-offset-2 ring-indigo-500" : "",
                           checked
                             ? "bg-indigo-600 border-transparent text-white hover:bg-indigo-700"
@@ -141,7 +141,7 @@ const ProductDetail = () => {
                 e.preventDefault();
                 addToCart();
               }}
-              className="mt-8 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="mt-8 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               Add to cart
             </button>
@@ -170,7 +170,7 @@ const ProductDetail = () => {
                 >
                   <dt>
                     <policy.icon
-                      className="mx-auto h-6 w-6 flex-shrink-0 text-gray-400"
+                      className="mx-auto h-6 w-6 shrink-0 text-gray-400"
                       aria-hidden="true"
                     />
                     <span className="mt-4 text-sm font-medium text-gray-900">

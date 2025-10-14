@@ -80,7 +80,7 @@ const Navigation = () => {
                           <Popover.Panel className="absolute inset-x-0 z-10 top-full">
                             {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
                             <div
-                              className="absolute inset-0 bg-white shadow top-1/2"
+                              className="absolute inset-0 bg-white shadow-sm top-1/2"
                               aria-hidden="true"
                             />
 
@@ -188,7 +188,7 @@ const Navigation = () => {
                 <img
                   src="/images/flag-usa.svg"
                   alt=""
-                  className="flex-shrink-0 block w-6 h-auto"
+                  className="shrink-0 block w-6 h-auto"
                 />
                 <span className="block ml-3 text-sm font-medium">USD</span>
                 <span className="sr-only">, change currency</span>
@@ -212,7 +212,7 @@ const Navigation = () => {
                   className="flex items-center p-2 mr-4 -m-2 group"
                 >
                   <ShoppingBagIcon
-                    className="flex-shrink-0 w-6 h-6 text-gray-400 group-hover:text-gray-500"
+                    className="shrink-0 w-6 h-6 text-gray-400 group-hover:text-gray-500"
                     aria-hidden="true"
                   />
                   <span className="sr-only">items in cart, view bag</span>
@@ -223,7 +223,7 @@ const Navigation = () => {
                   <Link to="/orders">
                     <button
                       type="button"
-                      className="relative inline-flex items-center px-4 py-2 mr-4 text-sm font-medium border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="relative inline-flex items-center px-4 py-2 mr-4 text-sm font-medium border border-transparent rounded-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                       <span>Orders</span>
                     </button>
@@ -231,7 +231,7 @@ const Navigation = () => {
                     <button
                       type="button"
                       onClick={logOutHandle}
-                      className="relative inline-flex items-center px-4 py-2 mr-4 text-sm font-medium border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="relative inline-flex items-center px-4 py-2 mr-4 text-sm font-medium border border-transparent rounded-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                       <span>Logout</span>
                     </button>
@@ -242,13 +242,13 @@ const Navigation = () => {
                     <button
                       type="button"
                       onClick={logInHandle}
-                      className="relative inline-flex items-center px-4 py-2 mr-4 text-sm font-medium border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="relative inline-flex items-center px-4 py-2 mr-4 text-sm font-medium border border-transparent rounded-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                       <span>Login</span>
                     </button>
                     <button
                       type="button"
-                      className="relative inline-flex items-center px-4 py-2 mr-4 text-sm font-medium text-white bg-green-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="relative inline-flex items-center px-4 py-2 mr-4 text-sm font-medium text-white bg-green-600 border border-transparent rounded-md shadow-xs hover:bg-indigo-700 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                       <span>Signup</span>
                     </button>

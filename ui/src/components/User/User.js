@@ -90,7 +90,7 @@ const User = () => {
                     <Field
                       name="first_name"
                       type="text"
-                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                      className="shadow-xs focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                     />
                     <ErrorMessage
                       name="first_name"
@@ -111,7 +111,7 @@ const User = () => {
                     <Field
                       name="last_name"
                       type="text"
-                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                      className="shadow-xs focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                     />
                     <ErrorMessage
                       name="last_name"
@@ -132,7 +132,7 @@ const User = () => {
                     <Field
                       name="user_email"
                       type="email"
-                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                      className="shadow-xs focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                     />
                     <ErrorMessage
                       name="user_email"
@@ -153,7 +153,7 @@ const User = () => {
                     <Field
                       name="addresses[0].country"
                       type="text"
-                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                      className="shadow-xs focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                     />
                     <ErrorMessage
                       name="addresses[0].country"
@@ -174,7 +174,7 @@ const User = () => {
                     <Field
                       name="addresses[0].street"
                       type="text"
-                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                      className="shadow-xs focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                     />
                     <ErrorMessage
                       name="addresses[0].street"
@@ -195,7 +195,7 @@ const User = () => {
                     <Field
                       name="addresses[0].city"
                       type="text"
-                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                      className="shadow-xs focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                     />
                     <ErrorMessage
                       name="addresses[0].city"
@@ -216,7 +216,7 @@ const User = () => {
                     <Field
                       name="addresses[0].state_province"
                       type="text"
-                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                      className="shadow-xs focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                     />
                     <ErrorMessage
                       name="addresses[0].state_province"
@@ -237,7 +237,7 @@ const User = () => {
                     <Field
                       name="addresses[0].postal_code"
                       type="text"
-                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                      className="shadow-xs focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                     />
                     <ErrorMessage
                       name="addresses[0].postal_code"
@@ -252,7 +252,7 @@ const User = () => {
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-xs text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   Save
                 </button>
@@ -316,7 +316,7 @@ const User = () => {
                     <Field
                       name="password"
                       type="password"
-                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                      className="shadow-xs focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                     />
                     <ErrorMessage
                       name="password"
@@ -336,7 +336,7 @@ const User = () => {
                     <Field
                       name="newPassword"
                       type="password"
-                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                      className="shadow-xs focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                     />
                     <ErrorMessage
                       name="newPassword"
@@ -356,7 +356,7 @@ const User = () => {
                     <Field
                       name="confirmNewPassword"
                       type="password"
-                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                      className="shadow-xs focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                     />
                     <ErrorMessage
                       name="confirmNewPassword"
@@ -371,7 +371,7 @@ const User = () => {
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-xs text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   Save
                 </button>
