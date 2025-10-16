@@ -1,9 +1,3 @@
-import {
-  route,
-} from "@react-router/dev/routes";
+import { flatRoutes } from "@react-router/fs-routes";
 
-export default [
-  // * matches all URLs, the ? makes it optional so it will match / as well
-   route("/", "./pages/LandingPage/HomePage.jsx"),
-  route("*?", "catchall.jsx"),
-];
+export default flatRoutes({rootDirectory: "routes",});
