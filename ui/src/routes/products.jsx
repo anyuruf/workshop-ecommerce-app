@@ -1,10 +1,10 @@
 import RootDash from '@/components/RootLayout/RootDash'
 import React from 'react'
 
-function _AppRoute() {
+function ProductsLayout() {
   return (
     <RootDash  />
   )
 }
 
-export default _AppRoute;
+export default ProductsLayout;

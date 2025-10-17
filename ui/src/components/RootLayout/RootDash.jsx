@@ -4,6 +4,7 @@ import {
   SidebarProvider,
 } from "@/components/ui/sidebar"
 import AppHeader from "./AppHeader";
+import { Outlet } from "react-router";
 
 export default function RootDash() {
   return (
