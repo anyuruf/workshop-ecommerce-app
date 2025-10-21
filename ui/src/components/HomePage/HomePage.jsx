@@ -1,10 +1,12 @@
 import HeroCarousel from "@/components/HomePage/HeroCarousel"
 import HorizontalScrollSection from "@/components/HomePage/HorizontalScrollSection"
 import PopularGridSection from "@/components/HomePage/PopularGridSection"
+import { HeroHeader } from "./Header/HeroHeader"
 
 export default function HomePage() {
   return (
-    <main className="space-y-16">
+    <main>
+      <HeroHeader />
       <HeroCarousel />
       <HorizontalScrollSection />
       <PopularGridSection />

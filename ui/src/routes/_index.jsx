@@ -1,4 +1,9 @@
-// @/app/routes/_index.tsx
-import { redirect } from 'react-router';
+import HomePage from '@/components/HomePage/HomePage';
 
-export const loader = () => redirect('/products');
+function AppIndex() {
+  return (
+    <HomePage />
+  )
+}
+
+export default AppIndex
