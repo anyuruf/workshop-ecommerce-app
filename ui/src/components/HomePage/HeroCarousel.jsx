@@ -1,9 +1,6 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useCallback, useEffect, useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
-import { Image } from "@unpic/react";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 export default function HeroCarousel() {
   const [carouselAPI, setCarouselAPI] = useState(null);
@@ -31,7 +28,7 @@ export default function HeroCarousel() {
     "/mocks/pumpkin.jpg", "/mocks/tractor.jpg"];
 
   return (
-    <section className="relative w-full h-[600px]">
+    <section className="max-w-7xl h-[600px]">
       <Carousel 
         plugins={[Autoplay({ delay: 2500 })]}
         opts={{ loop: true, align: "center" }}
@@ -41,7 +38,7 @@ export default function HeroCarousel() {
           {images.map((img, index) => (
             <CarouselItem key={index} 
               className={`
-                relative w-full h-[480px]
+                w-full h-[480px]
                 bg-cover bg-center
                 flex items-center justify-center
                 text-white 
