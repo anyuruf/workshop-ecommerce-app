@@ -23,7 +23,7 @@ export const HeroHeader = () => {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
     return (
-        <header className='max-w-7xl'>
+        <header className='max-w-7xl mx-auto'>
             <nav
                 data-state={menuState && 'active'}
                 className="px-4">
