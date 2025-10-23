@@ -10,7 +10,7 @@ export default function PopularGridSection() {
         image: "/mocks/tshirt4.jpg",
         })
   return (
-    <section className="py-12 bg-gray-50">
+    <section className="py-12 max-w-7xl bg-gray-50">
       <h2 className="text-2xl font-bold mb-8 px-4">Popular Items</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">

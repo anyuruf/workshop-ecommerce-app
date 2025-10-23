@@ -14,7 +14,7 @@ export default function HorizontalScrollSection() {
   const items = Array(5).fill(product)
 
   return (
-    <section className="py-12">
+    <section className="py-12 max-w-7xl mx-auto">
       <h2 className="text-2xl font-bold mb-6 px-4">Featured Products</h2>
 
       <div className="flex overflow-x-auto space-x-6 px-4 scrollbar-hide">
