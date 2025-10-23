@@ -28,7 +28,7 @@ export default function HeroCarousel() {
     "/mocks/pumpkin.jpg", "/mocks/tractor.jpg"];
 
   return (
-    <section className="max-w-7xl h-[600px]">
+    <section className="max-w-7xl mx-auto h-[600px]">
       <Carousel 
         plugins={[Autoplay({ delay: 2500 })]}
         opts={{ loop: true, align: "center" }}
