@@ -1,42 +1,42 @@
-import { Search } from 'lucide-react';
-
+import { ChevronDown, Search } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 function SearchForm() {
   return (
-     <div>
-        <form
-            action=""
-            className="mx-auto my-10 max-w-sm lg:my-12 lg:ml-0 lg:mr-auto">
-            <div className="bg-background has-[input:focus]:ring-muted relative grid grid-cols-[1fr_auto] items-center rounded-[calc(var(--radius)+0.75rem)] border pr-3 shadow shadow-zinc-950/5 has-[input:focus]:ring-2">
-                <Search className="text-caption pointer-events-none absolute inset-y-0 left-5 my-auto size-5" />
+    <>
+    {/* flex classes are for the parent container */}
+    <form className="gap-4 justify-center flex-grow hidden md:flex">
+      <div className="relative w-full max-w-xl">
+        {/* Left button top-0 for (top-1/2 -translate-y-1/2) */}
+        <Button
+          type="button"
+          className="absolute left-0 top-0 py-2 px-4 inline-flex items-center gap-2 rounded-r-none"
+        >
+          <span>Category</span>
+          <ChevronDown className="w-4 h-4" />
+        </Button>
 
-                <input
-                    placeholder="Your mail address"
-                    className="h-14 w-full bg-transparent pl-12 focus:outline-none"
-                    type="email"
-                />
+        {/* Input */}
+        <Input
+          type="search"
+          placeholder="Search products..."
+          className="w-full px-30"
+        />
 
-                <div className="md:pr-1.5 lg:pr-0">
-                    <Button
-                        aria-label="submit"
-                        className="rounded-(--radius)">
-                        <span className="hidden md:block">Get Started</span>
-                        <SendHorizonal
-                            className="relative mx-auto size-5 md:hidden"
-                            strokeWidth={2}
-                        />
-                    </Button>
-                </div>
-            </div>
-        </form>
-
-        <ul className="list-inside list-disc space-y-2">
-            <li>Faster</li>
-            <li>Modern</li>
-            <li>100% Customizable</li>
-        </ul>
-    </div>
-  )
+        {/* Right button */}
+        <Button
+          type="submit"
+          className="absolute right-0 top-0 z-10 py-2 px-4 inline-flex items-center gap-2 rounded-l-none"
+        >
+          <Search className="w-4 h-4" />
+          <span>Search</span>
+        </Button>
+      </div>
+    </form>
+    </>
+  );
 }
+
 
 export default SearchForm

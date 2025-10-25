@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import React from 'react'
 import { cn } from '@/lib/utils'
 import { Link } from 'react-router'
+import SearchForm from '../SearchForm'
 
 const menuItems = [
     { name: 'Features', href: '#link' },
@@ -46,19 +47,7 @@ export const HeroHeader = () => {
                             </button>
                         </div>
 
-                        <div className="absolute inset-0 m-auto hidden size-fit lg:block">
-                            <ul className="flex gap-8 text-sm">
-                                {menuItems.map((item, index) => (
-                                    <li key={index}>
-                                        <Link
-                                            href={item.href}
-                                            className="text-muted-foreground  text-shadow-amber-600 hover:text-accent-foreground block duration-150">
-                                            <span>{item.name}</span>
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                        <SearchForm />
 
                         <div className="bg-background in-data-[state=active]:block lg:in-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent">
                             <div className="lg:hidden">
