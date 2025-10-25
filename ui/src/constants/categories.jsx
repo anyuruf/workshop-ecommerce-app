@@ -1,4 +1,4 @@
-export const categoryGroups = [
+export const CATEGORY_GROUPS = [
     {
       title: 'Motors',
       items: ['Parts & accessories', 'Cars & trucks', 'Motorcycles', 'Other vehicles'],
