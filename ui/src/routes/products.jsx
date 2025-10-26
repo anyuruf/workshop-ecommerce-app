@@ -1,10 +1,8 @@
-import RootDash from '@/components/RootLayout/RootDash'
-import React from 'react'
+import RootDash from "@/components/RootLayout/RootDash";
+import React from "react";
 
 function ProductsLayout() {
-  return (
-    <RootDash  />
-  )
+  return <RootDash />;
 }
 
 export default ProductsLayout;

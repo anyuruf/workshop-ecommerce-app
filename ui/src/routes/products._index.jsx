@@ -1,10 +1,8 @@
-import HomePage from '@/components/HomePage/HomePage'
-import React from 'react'
+import HomePage from "@/components/HomePage/HomePage";
+import React from "react";
 
 function productsIndex() {
-  return (
-    <HomePage />
-  )
+  return <HomePage />;
 }
 
-export default productsIndex
+export default productsIndex;

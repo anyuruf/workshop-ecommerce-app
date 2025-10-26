@@ -30,7 +30,7 @@ const User = () => {
               state_province: _.get(
                 currentUser,
                 "addresses[0].state_province",
-                ""
+                "",
               ),
               postal_code: _.get(currentUser, "addresses[0].postal_code", ""),
             },
@@ -52,7 +52,7 @@ const User = () => {
                   "Content-Type": "application/json",
                   "X-XSRF-TOKEN": Cookies.get("XSRF-TOKEN"),
                 },
-              }
+              },
             );
             const resJson = await res.json();
             setSubmitting(false);

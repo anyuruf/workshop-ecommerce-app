@@ -40,7 +40,7 @@ const Cart = () => {
   const placeOrder = async () => {
     if (!currentUser.addresses && !currentUser.addresses[0]) {
       return toast.error(
-        "Please add your shipping address in the user profile."
+        "Please add your shipping address in the user profile.",
       );
     }
     try {

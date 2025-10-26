@@ -6,11 +6,10 @@ import _ from "lodash";
 const TOP_LEVEL_CATEGORY_UUID = "017fe537-bb13-7c35-b52a-cb5490cce7be";
 const FEATURED_CATEGORY_ID = "202112";
 
-const fetcher = (url) => fetch(`${url}`,
-  {
-    credentials: "include",          // <---- important
-  },
-).then((res) => res.json());
+const fetcher = (url) =>
+  fetch(`${url}`, {
+    credentials: "include", // <---- important
+  }).then((res) => res.json());
 let categoryCache = null;
 
 export const useAllCategories = () => {
@@ -26,19 +25,19 @@ export const useAllCategories = () => {
         return;
       }
       const parents = await fetcher(
-        `/api/v1/categories/${TOP_LEVEL_CATEGORY_UUID}`
+        `/api/v1/categories/${TOP_LEVEL_CATEGORY_UUID}`,
       );
       const children = await Promise.all(
         parents.map((category) =>
-          fetcher(`/api/v1/categories/${category.categoryId}`)
-        )
+          fetcher(`/api/v1/categories/${category.categoryId}`),
+        ),
       );
       children.forEach((childrenCategories) =>
         childrenCategories.forEach((child) => {
           const parent = _.find(parents, { categoryId: child.parentId });
           parent.children = parent.children ?? [];
           parent.children.push(child);
-        })
+        }),
       );
       categoryCache = parents;
       setCategories(parents);
@@ -63,14 +62,12 @@ export const useFeaturedProducts = async () => {
   const path = `http://localhost:8035/api/v1/featured/${FEATURED_CATEGORY_ID}`;
   const data = await fetcher(path);
   return data;
-   
 };
-
 
 export const useCategory = (parentId, categoryId) => {
   return useSWR(
     `/api/v1/categories/category/${parentId}/${categoryId}`,
-    fetcher
+    fetcher,
   );
 };
 
@@ -82,18 +79,18 @@ export const useProduct = (parentId, categoryId) => {
   useEffect(() => {
     const fetchData = async () => {
       const category = await fetcher(
-        `/api/v1/categories/category/${parentId}/${categoryId}`
+        `/api/v1/categories/category/${parentId}/${categoryId}`,
       );
       if (category.products) {
         const products = await Promise.all(
           category.products.map((productId) =>
-            fetcher(`/api/v1/products/product/${productId}`)
-          )
+            fetcher(`/api/v1/products/product/${productId}`),
+          ),
         );
         const prices = await Promise.all(
           category.products.map((productId) =>
-            fetcher(`/api/v1/prices/price/${productId}`)
-          )
+            fetcher(`/api/v1/prices/price/${productId}`),
+          ),
         );
         category.products = products.map((product) => {
           product.price = _.find(prices, { product_id: product.product_id });
@@ -120,13 +117,13 @@ export const useCart = (cartId) => {
       if (newCart.length) {
         const cartItems = await Promise.all(
           newCart.map((cartItem) =>
-            fetcher(`/api/v1/products/product/${cartItem.product_id}`)
-          )
+            fetcher(`/api/v1/products/product/${cartItem.product_id}`),
+          ),
         );
         const prices = await Promise.all(
           newCart.map((cartItem) =>
-            fetcher(`/api/v1/prices/price/${cartItem.product_id}`)
-          )
+            fetcher(`/api/v1/prices/price/${cartItem.product_id}`),
+          ),
         );
         cartItems.forEach((cartItem) => {
           cartItem.price = _.find(prices, { product_id: cartItem.product_id });

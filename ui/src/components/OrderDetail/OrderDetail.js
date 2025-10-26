@@ -41,7 +41,7 @@ const OrderDetail = () => {
                     <dd className="mt-1 text-gray-500">
                       <time dateTime={order.order_timestamp}>
                         {DateTime.fromISO(order.order_timestamp).toLocaleString(
-                          DateTime.DATETIME_MED
+                          DateTime.DATETIME_MED,
                         )}
                       </time>
                     </dd>
