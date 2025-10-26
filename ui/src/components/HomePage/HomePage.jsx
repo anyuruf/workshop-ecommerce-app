@@ -2,6 +2,7 @@ import HeroCarousel from "@/components/HomePage/HeroCarousel";
 import HorizontalScrollSection from "@/components/HomePage/HorizontalScrollSection";
 import PopularGridSection from "@/components/HomePage/PopularGridSection";
 import { HeroHeader } from "./Header/HeroHeader";
+import Footer from "@/components/Footer";
 
 export default function HomePage() {
   return (
@@ -20,6 +21,7 @@ export default function HomePage() {
         <HeroCarousel />
         <HorizontalScrollSection />
         <PopularGridSection />
+        <Footer />
       </section>
     </main>
   );

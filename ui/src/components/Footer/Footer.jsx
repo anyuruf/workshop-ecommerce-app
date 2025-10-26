@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { useAllCategories } from "../../hooks";
 
 const Footer = () => {
@@ -26,7 +26,7 @@ const Footer = () => {
                     <h3 className="text-sm font-medium text-gray-900">
                       {parent.name}
                     </h3>
-                    <ul className="mt-6 space-y-6">
+                    {/* <ul className="mt-6 space-y-6">
                       {parent.children.map((child) => (
                         <li key={child.name} className="text-sm">
                           <Link
@@ -37,7 +37,7 @@ const Footer = () => {
                           </Link>
                         </li>
                       ))}
-                    </ul>
+                    </ul> */}
                   </div>
                 ))}
             </div>
