@@ -3,12 +3,14 @@ import useSWR from "swr";
 import { v4 as uuidv4 } from "uuid";
 import _ from "lodash";
 
-const TOP_LEVEL_CATEGORY_UUID = "017fe537-bb13-7c35-b52a-cb5490cce7be";
+const TOP_LEVEL_CATEGORY_UUID = "6a4d86aa-ceb5-4c6f-b9b9-80e9a8c58ad1";
 const FEATURED_CATEGORY_ID = "202112";
+export const BASE_URL = 'http://localhost:8035';
+
 
 const fetcher = (url) =>
-  fetch(`${url}`, {
-    credentials: "include", // <---- important
+  fetch(`${BASE_URL}${url}`, {
+   // credentials: "include", // <---- important
   }).then((res) => res.json());
 let categoryCache = null;
 
@@ -27,7 +29,7 @@ export const useAllCategories = () => {
       const parents = await fetcher(
         `/api/v1/categories/${TOP_LEVEL_CATEGORY_UUID}`,
       );
-      const children = await Promise.all(
+      /* const children = await Promise.all(
         parents.map((category) =>
           fetcher(`/api/v1/categories/${category.categoryId}`),
         ),
@@ -38,7 +40,7 @@ export const useAllCategories = () => {
           parent.children = parent.children ?? [];
           parent.children.push(child);
         }),
-      );
+      ); */
       categoryCache = parents;
       setCategories(parents);
       setLoading(false);
