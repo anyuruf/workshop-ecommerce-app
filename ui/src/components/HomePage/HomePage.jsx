@@ -22,5 +22,5 @@ export default function HomePage() {
         <PopularGridSection />
       </section>
     </main>
-  )
+  );
 }

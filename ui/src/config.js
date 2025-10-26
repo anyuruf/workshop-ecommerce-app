@@ -24,16 +24,15 @@ export const navigation = {
 // Get info from http://localhost:8080/realms/test/.well-known/openid-configuration
 
 export const authConfig = {
-  clientId: '28.goousercontent.com',
-  authorizationEndpoint: 'https://accounts.google.com/o/oauth2/v2/auth',
-  logoutEndpoint: 'https://oauth2.googleapis.com/revoke',
-  tokenEndpoint: ' https://oauth2.googleapis.com/token',
-  redirectUri: 'http://localhost:5173/',
-  scope: 'profile email offline_access',
+  clientId: "28.goousercontent.com",
+  authorizationEndpoint: "https://accounts.google.com/o/oauth2/v2/auth",
+  logoutEndpoint: "https://oauth2.googleapis.com/revoke",
+  tokenEndpoint: " https://oauth2.googleapis.com/token",
+  redirectUri: "http://localhost:5173/",
+  scope: "profile email offline_access",
   // Example to redirect back to original path after login has completed
   // preLogin: () => localStorage.setItem('preLoginPath', window.location.pathname),
   // postLogin: () => window.location.replace(localStorage.getItem('preLoginPath') || ''),
   decodeToken: true,
   autoLogin: false,
 };
-

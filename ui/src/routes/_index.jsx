@@ -1,9 +1,7 @@
-import HomePage from '@/components/HomePage/HomePage';
+import HomePage from "@/components/HomePage/HomePage";
 
 function AppIndex() {
-  return (
-    <HomePage />
-  )
+  return <HomePage />;
 }
 
-export default AppIndex
+export default AppIndex;

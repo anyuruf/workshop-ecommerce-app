@@ -9,7 +9,7 @@ import {
 } from "@heroicons/react/outline";
 import { navigation } from "../../config";
 import { classNames } from "../../utils";
-import { AuthContext } from 'react-oauth2-code-pkce';
+import { AuthContext } from "react-oauth2-code-pkce";
 
 const Navigation = () => {
   const { categories } = useAllCategories();
@@ -18,11 +18,11 @@ const Navigation = () => {
 
   const isAuthenticated = Boolean(token) && currentUser;
 
-  const logOutHandle = event => {
+  const logOutHandle = (event) => {
     logOut();
   };
 
-  const logInHandle = event => {
+  const logInHandle = (event) => {
     logIn();
   };
 
@@ -54,14 +54,14 @@ const Navigation = () => {
                               open
                                 ? "text-indigo-600"
                                 : "text-gray-700 hover:text-gray-800",
-                              "relative z-10 flex items-center justify-center transition-colors ease-out duration-200 text-sm font-medium"
+                              "relative z-10 flex items-center justify-center transition-colors ease-out duration-200 text-sm font-medium",
                             )}
                           >
                             {category.name}
                             <span
                               className={classNames(
                                 open ? "bg-indigo-600" : "",
-                                "absolute bottom-0 inset-x-0 h-0.5 transition-colors ease-out duration-200 sm:mt-5 sm:transform sm:translate-y-px"
+                                "absolute bottom-0 inset-x-0 h-0.5 transition-colors ease-out duration-200 sm:mt-5 sm:transform sm:translate-y-px",
                               )}
                               aria-hidden="true"
                             />
@@ -95,7 +95,7 @@ const Navigation = () => {
                                           itemIdx === 0
                                             ? "col-span-2 aspect-w-2"
                                             : "",
-                                          "group relative aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden"
+                                          "group relative aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden",
                                         )}
                                       >
                                         <img
@@ -228,30 +228,30 @@ const Navigation = () => {
                       <span>Orders</span>
                     </button>
                   </Link>
-                    <button
-                      type="button"
-                      onClick={logOutHandle}
-                      className="relative inline-flex items-center px-4 py-2 mr-4 text-sm font-medium border border-transparent rounded-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >
-                      <span>Logout</span>
-                    </button>
+                  <button
+                    type="button"
+                    onClick={logOutHandle}
+                    className="relative inline-flex items-center px-4 py-2 mr-4 text-sm font-medium border border-transparent rounded-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  >
+                    <span>Logout</span>
+                  </button>
                 </>
               )}
               {!isAuthenticated && (
                 <>
-                    <button
-                      type="button"
-                      onClick={logInHandle}
-                      className="relative inline-flex items-center px-4 py-2 mr-4 text-sm font-medium border border-transparent rounded-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >
-                      <span>Login</span>
-                    </button>
-                    <button
-                      type="button"
-                      className="relative inline-flex items-center px-4 py-2 mr-4 text-sm font-medium text-white bg-green-600 border border-transparent rounded-md shadow-xs hover:bg-indigo-700 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >
-                      <span>Signup</span>
-                    </button>
+                  <button
+                    type="button"
+                    onClick={logInHandle}
+                    className="relative inline-flex items-center px-4 py-2 mr-4 text-sm font-medium border border-transparent rounded-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  >
+                    <span>Login</span>
+                  </button>
+                  <button
+                    type="button"
+                    className="relative inline-flex items-center px-4 py-2 mr-4 text-sm font-medium text-white bg-green-600 border border-transparent rounded-md shadow-xs hover:bg-indigo-700 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  >
+                    <span>Signup</span>
+                  </button>
                 </>
               )}
             </div>

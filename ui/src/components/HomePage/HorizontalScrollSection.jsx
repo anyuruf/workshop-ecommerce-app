@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const product = {
   product_id: "f8f6adc7-466d-4028-a691-52677ad59cdb",
@@ -8,10 +8,10 @@ const product = {
     "Proident laboris amet aute reprehenderit voluptate duis. Tempor elit dolor esse enim exercitation ullamco.",
   price: 43,
   images: ["/mocks/tshirt4.jpg"],
-}
+};
 
 export default function HorizontalScrollSection() {
-  const items = Array(5).fill(product)
+  const items = Array(5).fill(product);
 
   return (
     <section className="py-12 max-w-7xl mx-auto">
@@ -40,5 +40,5 @@ export default function HorizontalScrollSection() {
         ))}
       </div>
     </section>
-  )
+  );
 }

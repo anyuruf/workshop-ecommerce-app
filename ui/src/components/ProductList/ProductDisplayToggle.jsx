@@ -11,10 +11,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Grid2x2, List } from "lucide-react";
 
-
-export const ProductDisplayToggle = ({
-  products,
-}) => {
+export const ProductDisplayToggle = ({ products }) => {
   const [view, setView] = useState("grid");
 
   return (
@@ -57,9 +54,7 @@ export const ProductDisplayToggle = ({
             {/* Image */}
             <div
               className={`overflow-hidden rounded-md ${
-                view === "grid"
-                  ? "w-full h-56"
-                  : "w-36 h-36 flex-shrink-0 mr-4"
+                view === "grid" ? "w-full h-56" : "w-36 h-36 flex-shrink-0 mr-4"
               }`}
             >
               <img
@@ -78,9 +73,7 @@ export const ProductDisplayToggle = ({
               }
             >
               <CardHeader
-                className={
-                  view === "grid" ? "px-4 pt-4 pb-2" : "p-0 mb-2"
-                }
+                className={view === "grid" ? "px-4 pt-4 pb-2" : "p-0 mb-2"}
               >
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-base font-semibold truncate">

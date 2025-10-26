@@ -27,7 +27,7 @@ const ProductDetail = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   let { product, loading, error } = useProduct(
     params.parentId,
-    params.categoryId
+    params.categoryId,
   );
   const cartId = useCartId();
 
@@ -57,7 +57,7 @@ const ProductDetail = () => {
           product_description: selectedProduct.short_desc,
           product_name: selectedProduct.name,
         }),
-      }
+      },
     );
     toast.success("Added to Cart");
   };
@@ -89,7 +89,7 @@ const ProductDetail = () => {
               alt={product.name}
               className={classNames(
                 "lg:col-span-2 lg:row-span-2",
-                "rounded-lg"
+                "rounded-lg",
               )}
             />
           </div>
@@ -123,7 +123,7 @@ const ProductDetail = () => {
                           checked
                             ? "bg-indigo-600 border-transparent text-white hover:bg-indigo-700"
                             : "bg-white border-gray-200 text-gray-900 hover:bg-gray-50",
-                          "border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium uppercase sm:flex-1 flex-wrap"
+                          "border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium uppercase sm:flex-1 flex-wrap",
                         )
                       }
                     >

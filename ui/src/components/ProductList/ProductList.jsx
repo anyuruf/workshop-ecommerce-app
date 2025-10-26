@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import Loading from "../Loading";
 
-const ProductList = ({products}) => {
+const ProductList = ({ products }) => {
   if (!products) return <Loading />;
 
   return (

@@ -1,14 +1,12 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-
-
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function PopularGridSection() {
-    const products = Array(6).fill({
-        name: "magna enim elit",
-        brand: "DataStax",
-        price: 43,
-        image: "/mocks/tshirt4.jpg",
-        })
+  const products = Array(6).fill({
+    name: "magna enim elit",
+    brand: "DataStax",
+    price: 43,
+    image: "/mocks/tshirt4.jpg",
+  });
   return (
     <section className="py-12 max-w-7xl bg-gray-50">
       <h2 className="text-2xl font-bold mb-8 px-4">Popular Items</h2>
@@ -35,5 +33,5 @@ export default function PopularGridSection() {
         ))}
       </div>
     </section>
-  )
+  );
 }

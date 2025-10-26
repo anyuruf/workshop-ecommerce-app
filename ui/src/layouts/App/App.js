@@ -1,4 +1,4 @@
-import { createBrowserRouter,  RouterProvider} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProductList from "../../components/ProductList";
 import Cart from "../../components/Cart";
 import Login from "../Login";
@@ -10,33 +10,31 @@ import OrderDetail from "../../components/OrderDetail";
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import { Toaster } from "react-hot-toast";
-import { authConfig } from '../../config';
-import { AuthProvider } from 'react-oauth2-code-pkce';
+import { authConfig } from "../../config";
+import { AuthProvider } from "react-oauth2-code-pkce";
 
 const App = () => {
-
   const router = createBrowserRouter([
-    { path: "/", element: <ProductList />, },
-    { path: "/categories/:categoryId/:categoryName", element: <ProductList />, },
-    { path: "/products/:parentId/:categoryId", element: <ProductDetail />, },
-    { path: "/cart", element: <Cart />, },
-    { path: "/login", element: <Login />, },
-    { path: "/signup", element: <Signup />, },
+    { path: "/", element: <ProductList /> },
+    { path: "/categories/:categoryId/:categoryName", element: <ProductList /> },
+    { path: "/products/:parentId/:categoryId", element: <ProductDetail /> },
+    { path: "/cart", element: <Cart /> },
+    { path: "/login", element: <Login /> },
+    { path: "/signup", element: <Signup /> },
     { path: "/user", element: <User /> },
     { path: "/orders", element: <OrderHistory /> },
-    { path: "/orders/:orderId", element: <OrderDetail /> }, 
+    { path: "/orders/:orderId", element: <OrderDetail /> },
   ]);
 
-
-  return ( 
-      <>
+  return (
+    <>
       <AuthProvider authConfig={authConfig}>
         <Navigation />
         <RouterProvider router={router} />
         <Footer />
         <Toaster />
       </AuthProvider>
-      </>
+    </>
   );
 };
 

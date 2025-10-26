@@ -8,7 +8,7 @@ export function ClientAuthProvider({ children }) {
 
   useEffect(() => setReady(true), []);
 
-  if (!ready) return null;           // TODO spinner/loading UI
+  if (!ready) return null; // TODO spinner/loading UI
 
   return <AuthProvider authConfig={authConfig}>{children}</AuthProvider>;
 }

@@ -3,6 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### Optional: use nodeenv on OSX
+
 Run the script `setup.sh` if you're on OSX to setup a NodeJS environment using `nodeenv`. After the script runs, execute `source venv/bin/activate` to use the isolated NodeJS environment.
 
 ## Available Scripts
