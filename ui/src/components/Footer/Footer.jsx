@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
-import { useAllCategories } from "../../hooks";
+import { useAllCategories } from "@/hooks";
 
 const Footer = () => {
   const { categories } = useAllCategories();
@@ -15,7 +15,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-12 md:grid-flow-col md:gap-x-8 md:gap-y-16 md:auto-rows-min">
             {/* Image section */}
             <div className="col-span-1 md:col-span-2 lg:row-start-1 lg:col-start-1">
-              <img src="/favicon.ico" alt="" className="h-8 w-auto" />
+              <img src="/images/favicon_io/favicon.ico" alt="" className="h-8 w-auto" />
             </div>
 
             {/* Sitemap sections */}
@@ -26,7 +26,7 @@ const Footer = () => {
                     <h3 className="text-sm font-medium text-gray-900">
                       {parent.name}
                     </h3>
-                    {/* <ul className="mt-6 space-y-6">
+                    {/*<ul className="mt-6 space-y-6">
                       {parent.children.map((child) => (
                         <li key={child.name} className="text-sm">
                           <Link
@@ -37,7 +37,7 @@ const Footer = () => {
                           </Link>
                         </li>
                       ))}
-                    </ul> */}
+                    </ul>*/}
                   </div>
                 ))}
             </div>

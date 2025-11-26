@@ -1,43 +1,58 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
-const product = {
-  product_id: "f8f6adc7-466d-4028-a691-52677ad59cdb",
-  name: "magna enim elit",
-  brand: "DataStax",
-  short_desc:
-    "Proident laboris amet aute reprehenderit voluptate duis. Tempor elit dolor esse enim exercitation ullamco.",
-  price: 43,
-  images: ["/mocks/tshirt4.jpg"],
-};
+import { featuredProducts } from "@/constants/featuredProducts";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Badge } from "@/components/ui/badge"
+import { Image } from "@unpic/react";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function HorizontalScrollSection() {
-  const items = Array(5).fill(product);
 
   return (
-    <section className="py-12 max-w-7xl mx-auto">
-      <h2 className="text-2xl font-bold mb-6 px-4">Featured Products</h2>
-
-      <div className="flex overflow-x-auto space-x-6 px-4 scrollbar-hide">
-        {items.map((item, i) => (
-          <Card
-            key={i}
-            className="min-w-[300px] rounded-2xl shadow-md hover:shadow-lg transition-all"
-          >
-            <CardHeader className="p-0">
-              <img
-                src={item.images[0]}
-                alt={item.name}
-                className="w-full h-56 object-cover rounded-t-2xl"
-              />
-            </CardHeader>
-            <CardContent className="p-4">
-              <CardTitle className="text-lg">{item.name}</CardTitle>
-              <p className="text-sm text-gray-500">{item.brand}</p>
-              <p className="text-sm mt-2 line-clamp-2">{item.short_desc}</p>
-              <p className="font-semibold mt-2">${item.price}</p>
-            </CardContent>
-          </Card>
-        ))}
+    <section className="grid grid-cols max-w-7xl mx-auto gap-4">
+      <h2 className="text-2xl font-bold px-4">Featured Products</h2>
+      <div className="w-full grid">
+        <Carousel
+          opts={{
+            align: "start",
+          }}
+          className="w-full max-w-7xl"
+        >
+          <CarouselContent>
+            {featuredProducts.map((prod, index) => (
+              <CarouselItem key={prod.id} className="grid grid-cols-subgrid md:basis-1/3 lg:basis-1/6">
+                  <Card key={prod.id} className="overflow-hidden p-3">
+                    <CardHeader className="p-0">
+                      <Badge>
+                        {prod.cta}
+                      </Badge>
+                      <CardTitle className="line-clamp-2">
+                        {prod.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex-1 items-center justify-center">
+                      <Image
+                        src={prod.imgUrl}
+                        alt={prod.title}
+                        className="h-35 w-full object-cover"
+                      />
+                    </CardContent>
+                    <CardFooter className="p-6 pt-0 flex items-center">
+                      <CardDescription className="line-clamp-2">
+                        {prod.description}
+                      </CardDescription>
+                    </CardFooter>
+                  </Card>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </div>
     </section>
   );

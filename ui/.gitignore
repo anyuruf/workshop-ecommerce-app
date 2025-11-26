@@ -1,5 +1,6 @@
 venv
 .env
+.env*
 .react-router/
 secure-connect-bundle.zip
 /build
