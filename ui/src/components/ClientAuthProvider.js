@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AuthProvider } from "react-oauth2-code-pkce";
-import { authConfig } from "../config";
+import { authConfig } from "@/config";
 
 // Delay rendering until we're in the browser
 export function ClientAuthProvider({ children }) {

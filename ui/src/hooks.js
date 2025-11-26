@@ -3,7 +3,7 @@ import useSWR from "swr";
 import { v4 as uuidv4 } from "uuid";
 import _ from "lodash";
 
-const TOP_LEVEL_CATEGORY_UUID = "6a4d86aa-ceb5-4c6f-b9b9-80e9a8c58ad1";
+const TOP_LEVEL_CATEGORY_UUID = "ffdac25a-0244-4894-bb31-a0884bc82aa9";
 const FEATURED_CATEGORY_ID = "202112";
 export const BASE_URL = 'http://localhost:8035';
 
@@ -61,9 +61,11 @@ export const useProducts = (categoryId) => {
 };
 
 export const useFeaturedProducts = async () => {
-  const path = `http://localhost:8035/api/v1/featured/${FEATURED_CATEGORY_ID}`;
-  const data = await fetcher(path);
-  return data;
+  const path = `/api/v1/featured/${FEATURED_CATEGORY_ID}`;
+  return useSWR(
+    path,
+    fetcher,
+  )
 };
 
 export const useCategory = (parentId, categoryId) => {

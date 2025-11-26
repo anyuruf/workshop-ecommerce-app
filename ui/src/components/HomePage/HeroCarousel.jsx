@@ -7,6 +7,8 @@ import {
 } from "@/components/ui/carousel";
 import { useCallback, useEffect, useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
+import { Button } from "@/components/ui/button";
+import { slides } from "@/constants/carouselProducts"
 
 export default function HeroCarousel() {
   const [carouselAPI, setCarouselAPI] = useState(null);
@@ -30,44 +32,41 @@ export default function HeroCarousel() {
     carouselAPI.on("select", onSelect);
   }, [carouselAPI, onSelect]);
 
-  const images = [
-    "/mocks/palm-tree.jpg",
-    "/mocks/dough.jpg",
-    "/mocks/pumpkin.jpg",
-    "/mocks/tractor.jpg",
-  ];
+
 
   return (
-    <section className="max-w-7xl mx-auto h-[600px]">
+    <section className="max-w-7xl mx-auto w-full h-[500px] mb-4">
       <Carousel
-        plugins={[Autoplay({ delay: 2500 })]}
+        plugins={[Autoplay({ delay: 3500 })]}
         opts={{ loop: true, align: "center" }}
         setApi={setCarouselAPI}
       >
         <CarouselContent>
-          {images.map((img, index) => (
+          {slides.map((slide, index) => (
             <CarouselItem
-              key={index}
-              className={`
-                w-full h-[480px]
-                bg-cover bg-center
-                flex items-center justify-center
-                text-white 
-              `}
-              style={{
-                backgroundImage: `url(${img})`,
-                backgroundBlendMode: "multiply",
-                backgroundColor: "hsla(35, 65%, 52%, 0.35)", // translucent gold overlay, // goldenrod tone
-              }}
+              key={slide.id}
             >
-              <h1 className="scroll-m-20 text-center text-shadow-md text-6xl font-extrabold tracking-tight text-balance z-10">
-                Go to Shopping Lounge
-              </h1>
+                {/********* Image Overlay *************/}
+              <div
+                className="relative w-full h-[480px] overflow-hidden bg-muted bg-cover bg-center bg-no-repeat"
+                style={{
+                  backgroundImage: `url(${slide.imgUrl})`,
+                }}>
+                {/* gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/65 to-transparent" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
+                  <h2 className="mb-2 font-bold text-3xl">{slide.title}</h2>
+                  <p className="mb-6 max-w-md text-sm opacity-90">
+                    {slide.description}
+                  </p>
+                  <Button variant="secondary">{slide.cta}</Button>
+                </div>
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious className="left-4" />
+        <CarouselNext className="right-4" />
       </Carousel>
     </section>
   );

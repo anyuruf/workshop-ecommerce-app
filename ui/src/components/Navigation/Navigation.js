@@ -177,7 +177,7 @@ const Navigation = () => {
             {/* Logo */}
             <Link to="/" className="flex">
               <span className="sr-only">Astra E-Commerce</span>
-              <img className="w-auto h-8" src="/favicon.ico" alt="" />
+              <img className="w-auto h-8" src="/images/favicon_io/favicon.ico" alt="" />
             </Link>
 
             <div className="flex items-center justify-end flex-1">
