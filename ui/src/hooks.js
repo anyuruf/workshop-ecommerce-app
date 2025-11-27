@@ -27,20 +27,20 @@ export const useAllCategories = () => {
         return;
       }
       const parents = await fetcher(
-        `/api/v1/categories/${TOP_LEVEL_CATEGORY_UUID}`,
+        `/api/v1/categories/${TOP_LEVEL_CATEGORY_UUID}`
       );
-      /* const children = await Promise.all(
+      const children = await Promise.all(
         parents.map((category) =>
-          fetcher(`/api/v1/categories/${category.categoryId}`),
-        ),
+          fetcher(`/api/v1/categories/${category.categoryId}`)
+        )
       );
       children.forEach((childrenCategories) =>
         childrenCategories.forEach((child) => {
           const parent = _.find(parents, { categoryId: child.parentId });
           parent.children = parent.children ?? [];
           parent.children.push(child);
-        }),
-      ); */
+        })
+      );
       categoryCache = parents;
       setCategories(parents);
       setLoading(false);

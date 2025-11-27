@@ -10,7 +10,7 @@ const Footer = () => {
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="border-t border-gray-200 py-20">
           <div className="grid grid-cols-1 md:grid-cols-12 md:grid-flow-col md:gap-x-8 md:gap-y-16 md:auto-rows-min">
             {/* Image section */}
@@ -23,21 +23,20 @@ const Footer = () => {
               {categories &&
                 categories.map((parent) => (
                   <div key={parent.categoryId}>
-                    <h3 className="text-sm font-medium text-gray-900">
+                    <h3 className="text-sm font-medium">
                       {parent.name}
                     </h3>
-                    {/*<ul className="mt-6 space-y-6">
+                    <ul className="mt-6 space-y-6">
                       {parent.children.map((child) => (
                         <li key={child.name} className="text-sm">
                           <Link
                             to={`/categories/${child.categoryId}/${child.name}`}
-                            className="text-gray-500 hover:text-gray-600"
                           >
                             {child.name}
                           </Link>
                         </li>
                       ))}
-                    </ul>*/}
+                    </ul>
                   </div>
                 ))}
             </div>
@@ -45,7 +44,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-100 py-10 text-center">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm">
             &copy; {new Date().getFullYear()} Astra E-Commerce, Inc. All rights
             reserved.
           </p>

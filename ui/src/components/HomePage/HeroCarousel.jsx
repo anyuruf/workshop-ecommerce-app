@@ -54,9 +54,9 @@ export default function HeroCarousel() {
                 }}>
                 {/* gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/65 to-transparent" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-                  <h2 className="mb-2 font-bold text-3xl">{slide.title}</h2>
-                  <p className="mb-6 max-w-md text-sm opacity-90">
+                <div className="absolute inset-0 flex flex-col items-center text-chart-2 justify-center p-8 text-center">
+                  <h2 className="mb-2 font-bold text-7xl">{slide.title}</h2>
+                  <p className="mb-6 max-w-md text-sm text-white opacity-90">
                     {slide.description}
                   </p>
                   <Button variant="secondary">{slide.cta}</Button>
