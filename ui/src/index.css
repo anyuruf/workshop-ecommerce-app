@@ -7,12 +7,6 @@
 @plugin '@tailwindcss/typography';
 @plugin '@tailwindcss/aspect-ratio';
 
-@font-face {
-    font-family: "Playfair";   /*Can be any text*/
-    src: local("PlayfairDisplay"),
-    url("@/assets/fonts/PlayfairDisplay-VariableFont_wght.ttf") format("truetype");
-}
-
 :root {
     --background: oklch(1.0000 0 0);
     --foreground: oklch(0.2686 0 0);
@@ -153,10 +147,19 @@
 }
 
 @layer base {
+    @font-face {
+        font-family: "Playfair";   /*Can be any text*/
+        src: local("PlayfairDisplay"),
+        url("@/assets/fonts/PlayfairDisplay-VariableFont_wght.ttf") format("truetype");
+    },
   * {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-primary;
   }
+}
+
+@theme {
+    --font-primary: 'playfair', sans-serif;
 }
