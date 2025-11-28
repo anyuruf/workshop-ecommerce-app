@@ -13,8 +13,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 export default function HorizontalScrollSection() {
 
   return (
-    <section className="grid grid-cols max-w-7xl mx-auto gap-4">
-      <h2 className="text-2xl font-bold px-4">Featured Products</h2>
+    <section className="grid grid-cols max-w-7xl mx-auto gap-6">
+      <h2 className="text-5xl font-bold px-4">Featured Products</h2>
       <div className="w-full grid">
         <Carousel
           opts={{
@@ -24,25 +24,25 @@ export default function HorizontalScrollSection() {
         >
           <CarouselContent>
             {featuredProducts.map((prod, index) => (
-              <CarouselItem key={prod.id} className="grid grid-cols-subgrid md:basis-1/3 lg:basis-1/6">
-                  <Card key={prod.id} className="overflow-hidden p-3">
-                    <CardHeader className="p-0">
+              <CarouselItem key={prod.id} className="grid md:basis-1/3 xl:basis-1/8 lg:basis-1/6">
+                  <Card key={prod.id} className="grid grid-cols grid-cols-subgrid overflow-hidden  w-full">
+                    <CardHeader>
                       <Badge>
                         {prod.cta}
                       </Badge>
-                      <CardTitle className="line-clamp-2">
+                      <CardTitle className=" text-xs font-bold line-clamp-1">
                         {prod.title}
                       </CardTitle>
                     </CardHeader>
-                    <CardContent className="flex-1 items-center justify-center">
+                    <CardContent className="px-0">
                       <Image
                         src={prod.imgUrl}
                         alt={prod.title}
                         className="h-35 w-full object-cover"
                       />
                     </CardContent>
-                    <CardFooter className="p-6 pt-0 flex items-center">
-                      <CardDescription className="line-clamp-2">
+                    <CardFooter >
+                      <CardDescription className="line-clamp-3">
                         {prod.description}
                       </CardDescription>
                     </CardFooter>
