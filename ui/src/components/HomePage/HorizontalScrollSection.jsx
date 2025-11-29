@@ -13,20 +13,20 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 export default function HorizontalScrollSection() {
 
   return (
-    <section className="grid grid-cols max-w-7xl mx-auto gap-6">
+    <section className="grid grid-cols max-w-7xl mx-auto gap-2 md:gap-6">
       <h2 className="text-5xl font-bold px-4">Featured Products</h2>
-      <div className="w-full grid">
+      <div className="w-full p-2 md:p-6 flex justify-center">
         <Carousel
           opts={{
             align: "start",
           }}
-          className="w-full max-w-7xl"
+          className="w-full max-w-7xl grid"
         >
-          <CarouselContent>
+          <CarouselContent className=''>
             {featuredProducts.map((prod, index) => (
-              <CarouselItem key={prod.id} className="grid md:basis-1/3 xl:basis-1/8 lg:basis-1/6">
-                  <Card key={prod.id} className="grid grid-cols grid-cols-subgrid overflow-hidden  w-full">
-                    <CardHeader>
+              <CarouselItem key={prod.id} className="basis-1/2 md:basis-1/6 lg:basis-1/8">
+                  <Card className="grid grid-cols-subgrid w-full">
+                    <CardHeader className="px-1 md:px-2">
                       <Badge>
                         {prod.cta}
                       </Badge>
@@ -38,11 +38,11 @@ export default function HorizontalScrollSection() {
                       <Image
                         src={prod.imgUrl}
                         alt={prod.title}
-                        className="h-35 w-full object-cover"
+                        className="h-35 w-full object-cover px-0"
                       />
                     </CardContent>
-                    <CardFooter >
-                      <CardDescription className="line-clamp-3">
+                    <CardFooter className="px-1 md:px-2">
+                      <CardDescription className="line-clamp-1 md:line-clamp-2">
                         {prod.description}
                       </CardDescription>
                     </CardFooter>
@@ -50,8 +50,8 @@ export default function HorizontalScrollSection() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselPrevious className="left-4" />
+          <CarouselNext className="right-4" />
         </Carousel>
       </div>
     </section>
