@@ -8,6 +8,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { BellIcon } from "lucide-react";
 
 export const NotificationMenu = ({
