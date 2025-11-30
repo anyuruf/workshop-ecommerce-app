@@ -2,8 +2,8 @@ import * as React from "react";
 import { CSSProperties } from "react";
 const OutletLogoSVG = (props) => (
   <svg
-    width={289.16516}
-    height={104.92855}
+    width="auto"
+    height={35}
     viewBox="0 0 289.16516 104.92855"
     id="svg1"
     xmlSpace="preserve"
