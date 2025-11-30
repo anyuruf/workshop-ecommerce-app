@@ -1,76 +1,26 @@
 import {
-  ArrowRightLeftIcon,
-  CalendarClockIcon,
-  ChartNoAxesCombinedIcon,
-  ChartPieIcon,
-  ChartSplineIcon,
-  ClipboardListIcon,
-  Clock9Icon,
-  CrownIcon,
   FacebookIcon,
-  HashIcon,
   InstagramIcon,
-  LanguagesIcon,
   LinkedinIcon,
-  SettingsIcon,
-  SquareActivityIcon,
   TwitterIcon,
-  Undo2Icon,
-  UsersIcon
 } from 'lucide-react'
-
-
-import { Separator } from '@/components/ui/separator'
 import { Card, CardContent } from '@/components/ui/card'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator
-} from '@/components/ui/breadcrumb'
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuBadge,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarProvider,
-  SidebarTrigger
-} from '@/components/ui/sidebar'
-
-import LanguageDropdown from '@/components/shadcn-studio/blocks/dropdown-language'
-import ProfileDropdown from '@/components/shadcn-studio/blocks/dropdown-profile'
+import { Sidebar, SidebarHeader, SidebarProvider } from "@/components/ui/sidebar";
 import { AppHeader } from "@/components/RootLayout/AppHeader/AppHeader";
+import OutletLogoSVG from "@/components/HomePage/Header/OutletLogoSVG";
+
 
 const AppLayout = () => {
   return (
     <div className='flex min-h-dvh w-full'>
       <SidebarProvider>
         <Sidebar>
-          <SidebarContent>
-            <SidebarGroup>
-              <SidebarGroupContent>
-                <SidebarMenu>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton asChild>
-                      <a href='#'>
-                        <ChartNoAxesCombinedIcon />
-                        <span>Dashboard</span>
-                      </a>
-                    </SidebarMenuButton>
-                    <SidebarMenuBadge className='bg-primary/10 rounded-full'>5</SidebarMenuBadge>
-                  </SidebarMenuItem>
-                </SidebarMenu>
-              </SidebarGroupContent>
-            </SidebarGroup>
-          </SidebarContent>
+          <SidebarHeader className="p-0 gap-0">
+            {/********* Overlay for Logo to have same background as the one in the AppHeader ******/}
+            <div className="flex item-center z-53 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b justify-left px-12 py-4">
+               <OutletLogoSVG className="h-8"/>
+            </div>
+          </SidebarHeader>
         </Sidebar>
         <div className='flex flex-1 flex-col'>
           <AppHeader />
