@@ -19,6 +19,7 @@ import OutletLogoSVG from "@/components/HomePage/Header/OutletLogoSVG";
 import HamburgerIconSVG from "@/components/HomePage/Header/HamburgerIconSVG";
 import { NotificationMenu } from "@/components/RootLayout/AppHeader/NotificationMenu";
 import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
+import SearchForm from "@/components/HomePage/SearchForm";
 
 
 export interface Navbar05NavItem {
@@ -187,6 +188,10 @@ export const AppHeader = React.forwardRef<HTMLElement, Navbar05Props>(
                 </NavigationMenu>
               )}
             </div>
+          </div>
+          {/* Middle side */}
+          <div className="flex items-center gap-2" >
+            <SearchForm />
           </div>
           {/* Right side */}
           <div className="flex items-center gap-4">

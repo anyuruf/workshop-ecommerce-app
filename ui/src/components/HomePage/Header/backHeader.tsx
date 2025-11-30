@@ -8,6 +8,9 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Sidebar, SidebarHeader, SidebarProvider } from "@/components/ui/sidebar";
 import { AppHeader } from "@/components/RootLayout/AppHeader/AppHeader";
 import OutletLogoSVG from "@/components/HomePage/Header/OutletLogoSVG";
+import HeroCarousel from "@/components/HomePage/HeroCarousel";
+import HorizontalScrollSection from "@/components/HomePage/HorizontalScrollSection";
+import PopularGridSection from "@/components/HomePage/PopularGridSection";
 
 
 const AppLayout = () => {
@@ -24,12 +27,13 @@ const AppLayout = () => {
         </Sidebar>
         <div className='flex flex-1 flex-col'>
           <AppHeader />
-          <main className='mx-auto size-full max-w-7xl flex-1 px-4 py-6 sm:px-6'>
-            <Card className='h-250'>
-              <CardContent className='h-full'>
-                <div className='h-full rounded-md border bg-[repeating-linear-gradient(45deg,var(--muted),var(--muted)_1px,var(--card)_2px,var(--card)_15px)]' />
-              </CardContent>
-            </Card>
+          <main className='mx-auto size-full max-w-7xl flex-1 px-2 py-0 sm:px-4'>
+            {/* Main content */}
+            <section className="grid grid-cols gap-4 row-start-2 col-start-1">
+              <HeroCarousel />
+              <HorizontalScrollSection />
+              <PopularGridSection />
+            </section>
           </main>
           <footer>
             <div className='text-muted-foreground mx-auto flex size-full max-w-7xl items-center justify-between gap-3 px-4 py-3 max-sm:flex-col sm:gap-6 sm:px-6'>
