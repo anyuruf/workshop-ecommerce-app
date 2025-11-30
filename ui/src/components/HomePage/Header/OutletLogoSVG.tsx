@@ -1,9 +1,12 @@
 import * as React from "react";
 import { CSSProperties } from "react";
-const OutletLogoSVG = (props) => (
+import { cn } from "@/lib/utils"
+
+const OutletLogoSVG = ({ className, ...props }: React.SVGAttributes<SVGElement>) => (
   <svg
-    width="auto"
-    height={35}
+    className={cn('pointer-events-none', className)}
+    width={78}
+    height={28}
     viewBox="0 0 289.16516 104.92855"
     id="svg1"
     xmlSpace="preserve"

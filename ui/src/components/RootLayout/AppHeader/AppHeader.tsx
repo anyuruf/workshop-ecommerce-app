@@ -18,6 +18,8 @@ import { cn } from '@/lib/utils';
 import OutletLogoSVG from "@/components/HomePage/Header/OutletLogoSVG";
 import HamburgerIconSVG from "@/components/HomePage/Header/HamburgerIconSVG";
 import { NotificationMenu } from "@/components/RootLayout/AppHeader/NotificationMenu";
+import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
+import SearchForm from "@/components/HomePage/SearchForm";
 
 
 export interface Navbar05NavItem {
@@ -57,7 +59,7 @@ export const AppHeader = React.forwardRef<HTMLElement, Navbar05Props>(
       userName = 'anyuruf',
       userEmail = 'anyuruf@example.com',
       userAvatar,
-      notificationCount = 3,
+      notificationCount = 8,
       onNavItemClick,
       onInfoItemClick,
       onNotificationItemClick,
@@ -99,6 +101,15 @@ export const AppHeader = React.forwardRef<HTMLElement, Navbar05Props>(
         ref.current = node;
       }
     }, [ref]);
+
+    // Show Logo when side closed
+    const { open } = useSidebar();
+
+    const user = {
+      name: "anyuruf",
+      email: "anyuruf@anyuruf.net",
+      avatar: "https://avatars.githubusercontent.com/u/46653783?v=4"
+    }
 
     return (
       <header
@@ -146,13 +157,15 @@ export const AppHeader = React.forwardRef<HTMLElement, Navbar05Props>(
               </Popover>
             )}
             {/* Main nav */}
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2">
+              { !open &&
               <button
                 onClick={(e) => e.preventDefault()}
-                className="flex items-center space-x-2 text-primary hover:text-primary/90 transition-colors cursor-pointer"
+                className="flex items-center px-6 text-primary hover:text-primary/90 transition-colors cursor-pointer"
               >
                   {logo}
-              </button>
+              </button>}
+              { !isMobile && <SidebarTrigger className='[&_svg]:!size-4' /> }
               {/* Navigation menu */}
               {!isMobile && (
                 <NavigationMenu className="flex">
@@ -176,6 +189,10 @@ export const AppHeader = React.forwardRef<HTMLElement, Navbar05Props>(
               )}
             </div>
           </div>
+          {/* Middle side */}
+          <div className="flex items-center gap-2" >
+            <SearchForm />
+          </div>
           {/* Right side */}
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
@@ -187,8 +204,7 @@ export const AppHeader = React.forwardRef<HTMLElement, Navbar05Props>(
                 onItemClick={onNotificationItemClick}
               />
             </div>
-            {/* User menu */}
-
+            <UserMenu userName={user.name} userEmail={user.email} userAvatar={user.avatar}/>
           </div>
         </div>
       </header>

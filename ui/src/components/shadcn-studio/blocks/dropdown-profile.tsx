@@ -35,8 +35,8 @@ const ProfileDropdown = ({ trigger, defaultOpen, align = 'end' }: Props) => {
         <DropdownMenuLabel className='flex items-center gap-4 px-4 py-2.5 font-normal'>
           <div className='relative'>
             <Avatar className='size-10'>
-              <AvatarImage src='https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-1.png' alt='John Doe' />
-              <AvatarFallback>JD</AvatarFallback>
+              <AvatarImage src='https://avatars.githubusercontent.com/u/46653783?v=4' alt='anyuruf' />
+              <AvatarFallback>AF</AvatarFallback>
             </Avatar>
             <span className='ring-card absolute right-0 bottom-0 block size-2 rounded-full bg-green-600 ring-2' />
           </div>

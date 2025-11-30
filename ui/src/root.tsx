@@ -2,7 +2,7 @@ import { Links, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from "
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from "remix-themes";
 import { themeSessionResolver } from "@/lib/sessions.server";
 import clsx from "clsx";
-
+import { SidebarProvider } from '@/components/ui/sidebar';
 
 // Return the theme from the session storage using the loader
 export async function loader({ request }) {
@@ -17,9 +17,9 @@ export async function loader({ request }) {
 export default function AppWithProviders() {
   const data = useLoaderData();
   return (
-    <ThemeProvider specifiedTheme={data.theme} themeAction="/action/set-theme">
-      <AppLayout />
-    </ThemeProvider>
+      <ThemeProvider specifiedTheme={data.theme} themeAction="/action/set-theme">
+        <AppLayout />
+      </ThemeProvider>
   )
 }
 

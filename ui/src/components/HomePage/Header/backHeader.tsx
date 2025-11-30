@@ -1,85 +1,39 @@
 import {
-  ArrowRightLeftIcon,
-  CalendarClockIcon,
-  ChartNoAxesCombinedIcon,
-  ChartPieIcon,
-  ChartSplineIcon,
-  ClipboardListIcon,
-  Clock9Icon,
-  CrownIcon,
   FacebookIcon,
-  HashIcon,
   InstagramIcon,
-  LanguagesIcon,
   LinkedinIcon,
-  SettingsIcon,
-  SquareActivityIcon,
   TwitterIcon,
-  Undo2Icon,
-  UsersIcon
 } from 'lucide-react'
-
-
-import { Separator } from '@/components/ui/separator'
 import { Card, CardContent } from '@/components/ui/card'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator
-} from '@/components/ui/breadcrumb'
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuBadge,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarProvider,
-  SidebarTrigger
-} from '@/components/ui/sidebar'
-
-import LanguageDropdown from '@/components/shadcn-studio/blocks/dropdown-language'
-import ProfileDropdown from '@/components/shadcn-studio/blocks/dropdown-profile'
+import { Sidebar, SidebarHeader, SidebarProvider } from "@/components/ui/sidebar";
 import { AppHeader } from "@/components/RootLayout/AppHeader/AppHeader";
+import OutletLogoSVG from "@/components/HomePage/Header/OutletLogoSVG";
+import HeroCarousel from "@/components/HomePage/HeroCarousel";
+import HorizontalScrollSection from "@/components/HomePage/HorizontalScrollSection";
+import PopularGridSection from "@/components/HomePage/PopularGridSection";
+
 
 const AppLayout = () => {
   return (
     <div className='flex min-h-dvh w-full'>
       <SidebarProvider>
         <Sidebar>
-          <SidebarContent>
-            <SidebarGroup>
-              <SidebarGroupContent>
-                <SidebarMenu>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton asChild>
-                      <a href='#'>
-                        <ChartNoAxesCombinedIcon />
-                        <span>Dashboard</span>
-                      </a>
-                    </SidebarMenuButton>
-                    <SidebarMenuBadge className='bg-primary/10 rounded-full'>5</SidebarMenuBadge>
-                  </SidebarMenuItem>
-                </SidebarMenu>
-              </SidebarGroupContent>
-            </SidebarGroup>
-          </SidebarContent>
+          <SidebarHeader className="p-0 gap-0">
+            {/********* Overlay for Logo to have same background as the one in the AppHeader ******/}
+            <div className="flex item-center z-53 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b justify-left px-12 py-4">
+               <OutletLogoSVG className="h-8"/>
+            </div>
+          </SidebarHeader>
         </Sidebar>
         <div className='flex flex-1 flex-col'>
           <AppHeader />
-          <main className='mx-auto size-full max-w-7xl flex-1 px-4 py-6 sm:px-6'>
-            <Card className='h-250'>
-              <CardContent className='h-full'>
-                <div className='h-full rounded-md border bg-[repeating-linear-gradient(45deg,var(--muted),var(--muted)_1px,var(--card)_2px,var(--card)_15px)]' />
-              </CardContent>
-            </Card>
+          <main className='mx-auto size-full max-w-7xl flex-1 px-2 py-0 sm:px-4'>
+            {/* Main content */}
+            <section className="grid grid-cols gap-4 row-start-2 col-start-1">
+              <HeroCarousel />
+              <HorizontalScrollSection />
+              <PopularGridSection />
+            </section>
           </main>
           <footer>
             <div className='text-muted-foreground mx-auto flex size-full max-w-7xl items-center justify-between gap-3 px-4 py-3 max-sm:flex-col sm:gap-6 sm:px-6'>
