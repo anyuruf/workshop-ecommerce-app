@@ -70,7 +70,7 @@ export const featuredProducts = [
     cta: "Improve Setup"
   },
   {
-    id: "018f3b3a-ccb3-7c6b-bd9f-e3c4f75f510b",
+    id: "018f3b3a-ccb3-5c6b-bd9f-e3c4f75f530b",
     imgUrl: "/images/ecommerce/markus-winkler-unsplashCadigans.jpg",
     title: "Premium Cardigans",
     description: "Soft warmth, effortless elegance.",

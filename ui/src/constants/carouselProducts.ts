@@ -1,13 +1,13 @@
 export const slides = [
   {
-    id: "018f3b3a-ccb3-7c6b-bd9a-e3c4f75f5106",
+    id: "018f3b3a-ccb3-5c6b-bd9a-e3c4f75f5306",
     imgUrl: "/images/ecommerce/zakaria-issaad-unsplashadidasSnkWhite.jpg",
     title: "Latest Fashion",
     description: "Catch the <span>Latest!</span> Fashion merch with Us",
     cta: "To Fashion"
   },
   {
-    id: "018f3b3a-ccb3-7c6b-bd9e-e3c4f75f510a",
+    id: "018f3b3a-ccb3-5c6b-bd9e-e3c4f75f535a",
     imgUrl: "/images/ecommerce/nakul-unsplashLaptopAmbient.jpg",
     title: "Laptop Ambient Glow",
     description: "Designed to spark <span>creativity</span>.",
@@ -35,3 +35,5 @@ export const slides = [
     cta: "Packaging &"
   }
 ];
+
+export const additionalDescription = 'New Yorkers are facing the winter chill with less warmth this year as the city\'s most revered soup stand unexpectedly shutters, following a series of events that have left the community puzzled.';
