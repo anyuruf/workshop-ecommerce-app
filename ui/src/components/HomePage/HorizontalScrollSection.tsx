@@ -34,7 +34,7 @@ export default function HorizontalScrollSection() {
                         {prod.title}
                       </CardTitle>
                     </CardHeader>
-                    <CardContent className="px-0">
+                    <CardContent className="px-0 mask-radial-from-[55%_92%]">
                       <Image
                         src={prod.imgUrl}
                         alt={prod.title}

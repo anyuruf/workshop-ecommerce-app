@@ -53,7 +53,7 @@ export default function HeroCarousel() {
                   backgroundImage: `url(${slide.imgUrl})`,
                 }}>
                 {/* gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/65 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
                 <div className="absolute inset-0 flex flex-col items-center text-chart-2 justify-center p-8 text-center">
                   <h2 className="mb-2 font-bold text-shadow-md  tracking-tight text-7xl">{slide.title}</h2>
                   <p className="mb-6 max-w-md text-sm text-white opacity-90">

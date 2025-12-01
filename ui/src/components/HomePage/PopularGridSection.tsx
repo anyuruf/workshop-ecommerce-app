@@ -19,10 +19,10 @@ export default function PopularGridSection() {
                 <span >UGX</span> 38,000
               </Badge>
             </CardHeader>
-            <CardContent className='px-0'>
+            <CardContent className='px-0  mask-radial-from-[55%_92%]'>
               <Image
                 src={prod.imgUrl}
-                alt='Banner'
+                alt={prod.title}
                 className='block h-48 w-full aspect-video object-cover'
               />
             </CardContent>
