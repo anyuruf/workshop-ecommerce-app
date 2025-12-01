@@ -21,7 +21,7 @@ function SearchForm() {
           <Input
             type="search"
             placeholder="Search products..."
-            className="w-full px-29 border-2 border-y-primary"
+            className="w-full px-29 border-2 border-y-primary focus-visible:ring-[4px]"
           />
 
           {/* Right button */}

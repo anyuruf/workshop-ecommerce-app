@@ -9,6 +9,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Image } from "@unpic/react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import ProductCard from "@/components/HomePage/ProductCard/ProductCard";
+import SlimProductCard from "@/components/HomePage/ProductCard/SlimProductCard";
 
 export default function HorizontalScrollSection() {
 
@@ -25,28 +27,7 @@ export default function HorizontalScrollSection() {
           <CarouselContent>
             {featuredProducts.map((prod, index) => (
               <CarouselItem key={prod.id} className="basis-1/2 md:basis-1/6 lg:basis-1/8">
-                  <Card className="grid grid-cols-subgrid w-full">
-                    <CardHeader className="px-1 md:px-2">
-                      <Badge>
-                        {prod.cta}
-                      </Badge>
-                      <CardTitle className=" text-xs font-bold line-clamp-1">
-                        {prod.title}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="px-0 mask-radial-from-[55%_92%]">
-                      <Image
-                        src={prod.imgUrl}
-                        alt={prod.title}
-                        className="h-35 w-full object-cover px-0"
-                      />
-                    </CardContent>
-                    <CardFooter className="px-1 md:px-2">
-                      <CardDescription className="line-clamp-1 md:line-clamp-2">
-                        {prod.description}
-                      </CardDescription>
-                    </CardFooter>
-                  </Card>
+                <SlimProductCard key={prod.id} title={prod.title} imgUrl={prod.imgUrl} description={prod.description} />
               </CarouselItem>
             ))}
           </CarouselContent>

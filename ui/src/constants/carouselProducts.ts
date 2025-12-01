@@ -35,3 +35,5 @@ export const slides = [
     cta: "Packaging &"
   }
 ];
+
+export const additionalDescription = 'New Yorkers are facing the winter chill with less warmth this year as the city\'s most revered soup stand unexpectedly shutters, following a series of events that have left the community puzzled.';

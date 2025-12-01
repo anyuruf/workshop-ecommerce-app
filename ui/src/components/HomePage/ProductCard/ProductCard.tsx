@@ -4,7 +4,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge";
 import { Image } from "@unpic/react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, PhoneForwarded } from "lucide-react";
+import { additionalDescription } from "@/constants/carouselProducts";
 
 interface CardTransform {
   rotateX: number
@@ -12,7 +13,7 @@ interface CardTransform {
   scale: number
 }
 
-const ProductCard = ({title, imgUrl}) => {
+const ProductCard = ({title, imgUrl, description}) => {
   const cardRef = useRef<HTMLDivElement | null>(null)
   const imageRef = useRef<HTMLImageElement | null>(null)
   const animationFrameRef = useRef<number | undefined>(undefined)
@@ -108,12 +109,12 @@ const ProductCard = ({title, imgUrl}) => {
   return (
     <Card ref={cardRef} className='max-w-sm border-0'>
       <CardHeader className='flex flex-row justify-between'>
-        <CardTitle className="text-md text-shadow text-bold">{title}</CardTitle>
-        <Badge className='rounded-full text-gray-600 font-bold'>
+        <CardTitle className="text-xs text-shadow font-semibold">{title}</CardTitle>
+        <Badge className='rounded-full text-xs text-gray-600 font-semibold'>
           <span >UGX</span> 38,000
         </Badge>
       </CardHeader>
-      <CardContent className='p-0  mask-radial-from-[55%_92%]'>
+      <CardContent className='p-0 pb-2 md:pb-4  mask-radial-from-[55%_92%]'>
         <Image
           ref={imageRef}
           src={imgUrl}
@@ -121,13 +122,14 @@ const ProductCard = ({title, imgUrl}) => {
           className='block h-48 w-full aspect-video object-cover'
         />
       </CardContent>
-      <CardFooter className='gap-3 max-sm:flex-col max-sm:items-stretch'>
-        <CardDescription className="line-clamp-3">
-          Dive into the depths of an enchanting swirl where vibrant blues and soft pinks merge seamlessly, creating a
-          mesmerizing flow of colors.
-        </CardDescription>
-        <Button className='inline-flex gag-2'>Detailed View <ArrowRight className='h-4 w-4' /></Button>
-        <Button variant={'outline'}>Show Phone</Button>
+      <CardFooter>
+        <div className="w-full grid space-y-2">
+          <CardDescription className="line-clamp-2 mb-6">
+            {description} {additionalDescription}
+          </CardDescription>
+        <Button className='inline-flex text-shadow text-shadow-amber-600 gap-2 px-2'>Detailed View <ArrowRight className='h-4 w-4' /></Button>
+        <Button variant={'outline'}  className='inline-flex text-shadow text-shadow-amber-600 gap-2 px-2'>Show Phone <PhoneForwarded className='h-4 w-4' /></Button>
+        </div>
       </CardFooter>
     </Card>
   )
