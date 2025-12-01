@@ -14,7 +14,7 @@ function SearchForm() {
     <>
       {/* flex classes are for the parent container */}
       <form className="gap-4 justify-center flex-grow hidden md:flex">
-        <div className="relative w-full max-w-xl">
+        <div className="relative w-full max-w-md">
           {/* Left Button/Popover. top-0 for (top-1/2 -translate-y-1/2) */}
           <CategoryPopover classNames="absolute left-0 top-0" />
           {/* Input */}
@@ -56,7 +56,7 @@ function CategoryPopover({ classNames }) {
       </PopoverTrigger>
 
       <PopoverContent
-        align="start"
+        align="middle"
         className="w-3xl px-6 grid gap-4 grid-cols-[repeat(auto-fill,minmax(128px,1fr))]"
       >
         {CATEGORY_GROUPS.map((group) => (

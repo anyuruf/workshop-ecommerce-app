@@ -8,9 +8,9 @@ import { Card, CardContent, CardHeader, CardDescription, CardTitle, CardFooter }
 export default function PopularGridSection() {
   const products = featuredProducts.concat(slides)
   return (
-    <section className="grid grid-cols max-w-7xl mx-auto w-full gap-6">
-      <h2 className="text-5xl font-bold px-4">Popular Products</h2>
-      <div className='grid gap-4 grid-cols-[repeat(auto-fit,minmax(305px,1fr))]'>
+    <section className="grid grid-cols max-w-7xl mx-auto w-full gap2 md:gap-4">
+      <h2 className="text-4xl font-bold text-shadow-md px-2">Popular Products</h2>
+      <div className='grid gap-2 grid-cols-[repeat(auto-fit,minmax(305px,1fr))] justify-center'>
         {products.map((prod) => (
           <Card className='grid grid-cols max-w-sm grid-cols-subgrid overflow-hidden'>
             <CardHeader className='flex justify-between'>

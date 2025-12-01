@@ -26,7 +26,7 @@ export const HeroHeader = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
-    <header className="py-0">
+    <header className="pt-0">
       <nav data-state={menuState && "active"} className="fixed z-20 w-full px-2">
         <div
           className={cn(
