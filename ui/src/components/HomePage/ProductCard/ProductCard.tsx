@@ -1,5 +1,3 @@
-'use client'
-
 import { useEffect, useRef } from 'react'
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -111,12 +109,13 @@ const ProductCard = ({title, imgUrl}) => {
     <Card ref={cardRef} className='max-w-sm border-0'>
       <CardHeader className='flex flex-row justify-between'>
         <CardTitle className="text-md text-shadow text-bold">{title}</CardTitle>
-        <Badge className='rounded-sm text-white font-bold'>
+        <Badge className='rounded-full text-gray-600 font-bold'>
           <span >UGX</span> 38,000
         </Badge>
       </CardHeader>
       <CardContent className='p-0  mask-radial-from-[55%_92%]'>
         <Image
+          ref={imageRef}
           src={imgUrl}
           alt={title}
           className='block h-48 w-full aspect-video object-cover'
