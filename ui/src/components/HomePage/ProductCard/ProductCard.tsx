@@ -109,8 +109,8 @@ const ProductCard = ({title, imgUrl, description}) => {
   return (
     <Card ref={cardRef} className='max-w-sm border-0'>
       <CardHeader className='flex flex-row justify-between'>
-        <CardTitle className="text-xs text-shadow font-semibold">{title}</CardTitle>
-        <Badge className='rounded-full text-xs text-gray-600 font-semibold'>
+        <CardTitle className="text-md text-shadow font-extrabold">{title}</CardTitle>
+        <Badge className='rounded-full text-sm text-gray-600 font-extrabold'>
           <span >UGX</span> 38,000
         </Badge>
       </CardHeader>
@@ -127,8 +127,8 @@ const ProductCard = ({title, imgUrl, description}) => {
           <CardDescription className="line-clamp-2 mb-6">
             {description} {additionalDescription}
           </CardDescription>
-        <Button className='inline-flex text-shadow text-shadow-amber-600 gap-2 px-2'>Detailed View <ArrowRight className='h-4 w-4' /></Button>
-        <Button variant={'outline'}  className='inline-flex text-shadow text-shadow-amber-600 gap-2 px-2'>Show Phone <PhoneForwarded className='h-4 w-4' /></Button>
+        <Button className='inline-flex text-md font-extrabold text-shadow gap-2 px-2'>Detailed View <ArrowRight strokeWidth={3} className='h-4 w-4 text-md font-extrabold' /></Button>
+        <Button variant={'outline'}  className='inline-flex text-md font-extrabold text-shadow gap-2 px-2'>Show Phone <PhoneForwarded strokeWidth={3} className='h-4 w-4' /></Button>
         </div>
       </CardFooter>
     </Card>

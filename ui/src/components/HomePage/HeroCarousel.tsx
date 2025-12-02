@@ -9,6 +9,7 @@ import { useCallback, useEffect, useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import { Button } from "@/components/ui/button";
 import { slides } from "@/constants/carouselProducts"
+import { GradientText } from '@/components/shadcn-io/GradientText';
 
 export default function HeroCarousel() {
   const [carouselAPI, setCarouselAPI] = useState(null);
@@ -55,7 +56,7 @@ export default function HeroCarousel() {
                 {/* gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
                 <div className="absolute inset-0 flex flex-col items-center text-chart-2 justify-center p-8 text-center">
-                  <h2 className="mb-2 font-bold text-shadow-md  tracking-tight text-6xl">{slide.title}</h2>
+                  <GradientText className="mb-2 font-bold text-shadow-md  tracking-tight text-6xl" text={slide.title}/>
                   <p className="mb-6 max-w-md text-sm text-white opacity-90">
                     {slide.description}
                   </p>
