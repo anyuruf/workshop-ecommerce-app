@@ -3,53 +3,71 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { useEffect, useState } from "react";
+import Autoplay from 'embla-carousel-autoplay';
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { slides } from "@/constants/carouselProducts"
 import { GradientText } from '@/components/shadcn-io/GradientText';
-import ButtonGroup from "@/components/shadcn-io/ButtonGroup";
+import CarouselButtonGroup from "@/components/shadcn-io/ButtonGroup";
+import { useAutoplay } from "@/lib/utils";
 
 export default function HeroCarousel() {
   const [carouselAPI, setCarouselAPI] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+  const {isPlaying, setIsPlaying} = useAutoplay(carouselAPI);
 
-  // Check state
-  const canScrollNext = carouselAPI?.canScrollNext();
-  const currentPrev = carouselAPI?.canScrollPrev();
-  const isPlaying = carouselAPI?.onPlaying();
+  const autoplay = useRef(
+    Autoplay(
+      {
+        delay: 4000,
+        stopOnInteraction: false,
+        stopOnMouseEnter: false,
+        playOnInit: true,
+      },
+      (carouselRoot) => carouselRoot
+    )
+  );
 
 
-  const scrollPrev = () => {
+
+
+  const onSelect = useCallback(() => {
+    if (!carouselAPI) return;
+
+    setSelectedIndex(carouselAPI.selectedScrollSnap());
+  }, [carouselAPI]);
+
+  const scrollPrev = useCallback(() => {
     if (!carouselAPI) return;
     carouselAPI.scrollPrev();
-  };
+  },  [carouselAPI]);
 
-  const play = () => {
-    if (!carouselAPI) return;
-    carouselAPI.play();
-  };
-
-  const pause = () => {
-    if (!carouselAPI) return;
-    carouselAPI.pause();
-  };
-
-  const scrollNext = () => {
+  const scrollNext = useCallback(() => {
     if (!carouselAPI) return;
     carouselAPI.scrollNext();
+  },  [carouselAPI]);
+
+  /************ renamed method to scrollToIndex from scrollTo as there is an inbuilt scrollTo method ***/
+  const scrollToIndex = (index: number) => {
+    if (!carouselAPI) return;
+    carouselAPI.scrollTo(index);
   };
 
   useEffect(() => {
+    if (!carouselAPI) return;
     onSelect();
     setScrollSnaps(carouselAPI.scrollSnapList());
     carouselAPI.on("select", onSelect);
   }, [carouselAPI, onSelect]);
 
 
-
   return (
     <section className="max-w-7xl mx-auto w-full">
       <Carousel
         setApi={setCarouselAPI}
+        plugins={[autoplay.current]}
+        opts={{ loop: true, align: "center" }}
       >
         <CarouselContent>
           {slides.map((slide, index) => (
@@ -75,12 +93,12 @@ export default function HeroCarousel() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <ButtonGroup className="right-12 bottom-8" play={play} scrollPrev={scrollPrev} scrollNext={scrollNext} canScrollPrev={currentPrev} canScrollNext={canScrollNext} isPlaying={isPlaying} pause={pause}/>
+        <CarouselButtonGroup className="right-12 bottom-8"  autoplay={autoplay} scrollPrev={scrollPrev} scrollNext={scrollNext} isPlaying={isPlaying} />
         <div className="flex justify-center mt-4 space-x-2">
           {scrollSnaps.map((_, index) => (
             <Button
               key={index}
-              onClick={() => scrollTo(index)}
+              onClick={() => scrollToIndex(index)}
               size="icon"
               className={`w-2 h-2 rounded-full ${
                 selectedIndex === index ? "bg-primary" : "bg-gray-300"

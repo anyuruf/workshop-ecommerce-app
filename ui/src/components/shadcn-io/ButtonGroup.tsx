@@ -4,17 +4,14 @@ import { Button } from "@/components/ui/button";
 import { cn } from '@/lib/utils';
 
 interface Props {
-  isPlaying: boolean
-  play: () => void
-  pause: () => void
+  autoplay: unknown
   scrollPrev: () => void
   scrollNext: () => void
+  isPlaying: boolean
   className: string
-  canScrollNext: boolean
-  canScrollPrev: boolean
 }
-const ButtonGroup = (props:Props) => {
-  const { isPlaying, play, pause, scrollPrev, scrollNext, canScrollPrev, canScrollNext, className} = props;
+const CarouselButtonGroup = (props:Props) => {
+  const {  autoplay, scrollPrev, scrollNext, isPlaying, className} = props;
 
   return (
     <>
@@ -23,7 +20,7 @@ const ButtonGroup = (props:Props) => {
       className={cn('absolute divide-primary-foreground/30 inline-flex w-fit divide-x rounded-md shadow-xs', className)}>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button onClick={scrollPrev} type="button" className='rounded-none rounded-l-full focus-visible:z-10' disabled={canScrollPrev}>
+          <Button onClick={scrollPrev} type="button" className='rounded-none rounded-l-full focus-visible:z-10'>
             <ChevronLeft />
             <span className='sr-only'>Scroll left</span>
           </Button>
@@ -32,36 +29,37 @@ const ButtonGroup = (props:Props) => {
       </Tooltip>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button onClick={scrollNext} type="button" className='rounded-none focus-visible:z-10' disabled={canScrollNext}>
+          <Button onClick={scrollNext} type="button" className='rounded-none focus-visible:z-10'>
             <ChevronRight />
             <span className='sr-only'>Scroll Right</span>
           </Button>
         </TooltipTrigger>
         <TooltipContent className='px-2 py-1 text-xs'>Scroll right</TooltipContent>
       </Tooltip>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            type="button"
+            onClick={() =>
+              isPlaying
+                ? autoplay.current.stop()
+                : autoplay.current.play()
+            }
+            className="rounded-none rounded-r-full focus-visible:z-10"
+          >
+            {isPlaying ? <PauseIcon /> : <PlayIcon />}
+            <span className="sr-only">{isPlaying ? "Pause" : "Play"}</span>
+          </Button>
+        </TooltipTrigger>
 
-      {isPlaying?
-        (<Tooltip>
-          <TooltipTrigger asChild>
-            <Button onClick={play} type="button" className='rounded-none focus-visible:z-10'>
-              <PauseIcon />
-              <span className='sr-only'>Pause</span>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent className='px-2 py-1 text-xs'>Pause</TooltipContent>
-        </Tooltip> ):
-        (<Tooltip>
-          <TooltipTrigger asChild>
-            <Button onClick={pause} type="button" className='rounded-none rounded-r-full focus-visible:z-10'>
-              <PlayIcon />
-              <span className='sr-only'>Play Slides</span>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent className='px-2 py-1 text-xs'>Play Slides</TooltipContent>
-        </Tooltip>)}
+        <TooltipContent className="px-2 py-1 text-xs">
+          {isPlaying ? "Pause" : "Play Slides"}
+        </TooltipContent>
+      </Tooltip>
+
     </div>
     </>
   )
 }
 
-export default ButtonGroup;
+export default CarouselButtonGroup;
