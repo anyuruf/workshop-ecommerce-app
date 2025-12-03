@@ -34,7 +34,7 @@ const CarouselButtonGroup = (props:Props) => {
             <span className='sr-only'>Scroll Right</span>
           </Button>
         </TooltipTrigger>
-        <TooltipContent className='px-2 py-1 text-xs'>Scroll right</TooltipContent>
+        <TooltipContent className='px-2 py-1 text-xs'>Scroll Right</TooltipContent>
       </Tooltip>
       <Tooltip>
         <TooltipTrigger asChild>
