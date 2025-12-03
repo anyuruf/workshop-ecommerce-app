@@ -42,8 +42,8 @@ const CarouselButtonGroup = (props:Props) => {
             type="button"
             onClick={() =>
               isPlaying
-                ? autoplay.current.stop()
-                : autoplay.current.play()
+                ? autoplay.current?.stop()
+                : autoplay.current?.play()
             }
             className="rounded-none rounded-r-full focus-visible:z-10"
           >
