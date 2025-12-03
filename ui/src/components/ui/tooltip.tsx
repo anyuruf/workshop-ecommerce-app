@@ -2,6 +2,7 @@ import * as React from "react";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 
 import { cn } from "@/lib/utils";
+import { forwardRef } from "react";
 
 function TooltipProvider({ delayDuration = 0, ...props }) {
   return (
@@ -13,22 +14,23 @@ function TooltipProvider({ delayDuration = 0, ...props }) {
   );
 }
 
-function Tooltip({ ...props }) {
+const Tooltip = forwardRef(({ ...props }, ref) => {
   return (
     <TooltipProvider>
-      <TooltipPrimitive.Root data-slot="tooltip" {...props} />
+      <TooltipPrimitive.Root data-slot="tooltip" ref={ref} {...props} />
     </TooltipProvider>
   );
-}
+});
 
 function TooltipTrigger({ ...props }) {
   return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />;
 }
 
-function TooltipContent({ className, sideOffset = 0, children, ...props }) {
+const TooltipContent = forwardRef(({ className, sideOffset = 0, children, ...props }, ref) => {
   return (
     <TooltipPrimitive.Portal>
       <TooltipPrimitive.Content
+        ref={ref}
         data-slot="tooltip-content"
         sideOffset={sideOffset}
         className={cn(
@@ -42,6 +44,6 @@ function TooltipContent({ className, sideOffset = 0, children, ...props }) {
       </TooltipPrimitive.Content>
     </TooltipPrimitive.Portal>
   );
-}
+});
 
 export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };

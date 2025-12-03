@@ -10,8 +10,8 @@ const SlimProductCard = ({title, imgUrl, description}) => {
   return (
     <Card className='max-w-sm border-0 grid grid-cols-subgrid'>
       <CardHeader className='flex space-y-2 px-3'>
-        <CardTitle className="text-xs font-bold line-clamp-1 text-shadow">{title}</CardTitle>
-        <Badge className='rounded-full text-gray-600 font-bold'>
+        <CardTitle className="text-xs font-extrabold line-clamp-1 text-shadow">{title}</CardTitle>
+        <Badge className='rounded-full text-xs text-gray-600 font-extrabold'>
           <span >UGX</span> 38,000
         </Badge>
       </CardHeader>
@@ -27,8 +27,9 @@ const SlimProductCard = ({title, imgUrl, description}) => {
           <CardDescription className="line-clamp-2">
             {description}
           </CardDescription>
-          <Button className='inline-flex text-xs font-bold text-shadow text-shadow-amber-600 gap-2 px-2'>Details<ArrowRight className='h-2 w-2 font-bold' /></Button>
-          <Button variant={'outline'} className='inline-flex text-sx font-bold text-shadow text-shadow-amber-600 gap-2 px-2'>Show<PhoneForwarded className='h-2 w-2' /></Button>
+          <Button className='inline-flex text-md font-extrabold text-shadow gap-2 px-2'>Details<ArrowRight
+            strokeWidth={3} className='h-2 w-2 font-bold' /></Button>
+          <Button variant={'outline'} className='inline-flex text-md font-extrabold text-shadow  gap-2 px-2'>Show<PhoneForwarded strokeWidth={3} className='h-2 w-2' /></Button>
         </div>
       </CardFooter>
     </Card>
