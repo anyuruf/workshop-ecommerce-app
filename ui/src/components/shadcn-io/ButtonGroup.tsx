@@ -21,7 +21,7 @@ const CarouselButtonGroup = (props:Props) => {
       <Tooltip>
         <TooltipTrigger asChild>
           <Button onClick={scrollPrev} type="button" className='rounded-none rounded-l-full focus-visible:z-10'>
-            <ChevronLeft />
+            <ChevronLeft  strokeWidth={3} className="text-shadow" />
             <span className='sr-only'>Scroll left</span>
           </Button>
         </TooltipTrigger>
@@ -30,7 +30,7 @@ const CarouselButtonGroup = (props:Props) => {
       <Tooltip>
         <TooltipTrigger asChild>
           <Button onClick={scrollNext} type="button" className='rounded-none focus-visible:z-10'>
-            <ChevronRight />
+            <ChevronRight  strokeWidth={3} className="text-shadow" />
             <span className='sr-only'>Scroll Right</span>
           </Button>
         </TooltipTrigger>
@@ -47,7 +47,7 @@ const CarouselButtonGroup = (props:Props) => {
             }
             className="rounded-none rounded-r-full focus-visible:z-10"
           >
-            {isPlaying ? <PauseIcon /> : <PlayIcon />}
+            {isPlaying ? <PauseIcon className="text-shadow" strokeWidth={3} /> : <PlayIcon className="text-shadow" strokeWidth={3} />}
             <span className="sr-only">{isPlaying ? "Pause" : "Play"}</span>
           </Button>
         </TooltipTrigger>

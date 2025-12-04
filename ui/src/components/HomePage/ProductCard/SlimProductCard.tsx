@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Image } from "@unpic/react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, PhoneForwarded } from "lucide-react";
+import { BounceButton } from "@/components/shadcn-studio/BounceButton/BounceButton";
 
 const SlimProductCard = ({title, imgUrl, description}) => {
 
@@ -27,9 +28,9 @@ const SlimProductCard = ({title, imgUrl, description}) => {
           <CardDescription className="line-clamp-2">
             {description}
           </CardDescription>
-          <Button className='inline-flex text-md font-extrabold text-shadow gap-2 px-2'>Details<ArrowRight
-            strokeWidth={3} className='h-2 w-2 font-bold' /></Button>
-          <Button variant={'outline'} className='inline-flex text-md font-extrabold text-shadow  gap-2 px-2'>Show<PhoneForwarded strokeWidth={3} className='h-2 w-2' /></Button>
+          <BounceButton className='inline-flex text-md font-extrabold text-shadow gap-2 px-2'>Details<ArrowRight
+            strokeWidth={3} className='h-2 w-2 font-bold' /></BounceButton>
+          <BounceButton variant={'outline'} className='inline-flex text-md font-extrabold text-shadow  gap-2 px-2'>Show<PhoneForwarded strokeWidth={3} className='h-2 w-2' /></BounceButton>
         </div>
       </CardFooter>
     </Card>

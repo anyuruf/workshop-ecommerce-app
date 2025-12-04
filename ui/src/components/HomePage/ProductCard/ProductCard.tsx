@@ -6,6 +6,7 @@ import { Image } from "@unpic/react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, PhoneForwarded } from "lucide-react";
 import { additionalDescription } from "@/constants/carouselProducts";
+import { BounceButton } from "@/components/shadcn-studio/BounceButton/BounceButton";
 
 interface CardTransform {
   rotateX: number
@@ -127,8 +128,8 @@ const ProductCard = ({title, imgUrl, description}) => {
           <CardDescription className="line-clamp-2 mb-6">
             {description} {additionalDescription}
           </CardDescription>
-        <Button className='inline-flex text-md font-extrabold text-shadow gap-2 px-2'>Detailed View <ArrowRight strokeWidth={3} className='h-4 w-4 text-md font-extrabold' /></Button>
-        <Button variant={'outline'}  className='inline-flex text-md font-extrabold text-shadow gap-2 px-2'>Show Phone <PhoneForwarded strokeWidth={3} className='h-4 w-4' /></Button>
+        <BounceButton className='inline-flex text-md font-extrabold text-shadow gap-2 px-2'>Detailed View <ArrowRight strokeWidth={3} className='h-4 w-4 text-md font-extrabold' /></BounceButton>
+        <BounceButton variant={'outline'}  className='inline-flex text-md font-extrabold text-shadow gap-2 px-2'>Show Phone <PhoneForwarded strokeWidth={3} className='h-4 w-4' /></BounceButton>
         </div>
       </CardFooter>
     </Card>

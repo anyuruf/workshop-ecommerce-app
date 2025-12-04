@@ -45,9 +45,9 @@ export interface Navbar05Props extends React.HTMLAttributes<HTMLElement> {
 // Default navigation links
 const defaultNavigationLinks: Navbar05NavItem[] = [
   { href: '#', label: 'Home' },
-  { href: '#', label: 'Features' },
-  { href: '#', label: 'Pricing' },
-  { href: '#', label: 'About' },
+  { href: '#', label: 'Great Deals' },
+  { href: '#', label: 'Sell' },
+  { href: '#', label: 'My Outlet' },
 ];
 
 export const AppHeader = React.forwardRef<HTMLElement, Navbar05Props>(
@@ -76,7 +76,7 @@ export const AppHeader = React.forwardRef<HTMLElement, Navbar05Props>(
       const checkWidth = () => {
         if (containerRef.current) {
           const width = containerRef.current.offsetWidth;
-          setIsMobile(width < 768); // 768px is md breakpoint
+          setIsMobile(width < 1028); // 768px is md breakpoint
         }
       };
 
@@ -121,11 +121,22 @@ export const AppHeader = React.forwardRef<HTMLElement, Navbar05Props>(
         )}
         {...props}
       >
-        <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between gap-4">
+        <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between gap-1 md:gap-4">
           {/* Left side */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 w-full xl:w-auto">
+            {/****Mobile Logo ****/}
+            <div className="inline-flex items-center justify-between w-full">
+            { isMobile &&
+              <>
+              <button
+                onClick={(e) => e.preventDefault()}
+                className="flex items-center px-2 text-primary hover:text-primary/90 transition-colors cursor-pointer"
+              >
+                {logo}
+              </button>
+
             {/* Mobile menu trigger */}
-            {isMobile && (
+
               <Popover>
                 <PopoverTrigger asChild>
                   <Button
@@ -156,16 +167,12 @@ export const AppHeader = React.forwardRef<HTMLElement, Navbar05Props>(
                   </NavigationMenu>
                 </PopoverContent>
               </Popover>
-            )}
+              </>
+            }
+              </div>
             {/* Main nav */}
-            <div className="flex items-center gap-2">
-              { !open &&
-              <button
-                onClick={(e) => e.preventDefault()}
-                className="flex items-center px-6 text-primary hover:text-primary/90 transition-colors cursor-pointer"
-              >
-                  {logo}
-              </button>}
+            <div className="md:flex hidden items-center gap-2">
+
               { !isMobile && <SidebarTrigger className='[&_svg]:!size-4' /> }
               {/* Navigation menu */}
               {!isMobile && (
@@ -179,7 +186,7 @@ export const AppHeader = React.forwardRef<HTMLElement, Navbar05Props>(
                             e.preventDefault();
                             if (onNavItemClick && link.href) onNavItemClick(link.href);
                           }}
-                          className="text-muted-foreground hover:text-primary py-1.5 font-medium transition-colors cursor-pointer group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                          className="text-muted-foreground hover:text-primary py-1.5 text-md font-semibold transition-colors cursor-pointer group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                         >
                           {link.label}
                         </NavigationMenuLink>
@@ -191,11 +198,11 @@ export const AppHeader = React.forwardRef<HTMLElement, Navbar05Props>(
             </div>
           </div>
           {/* Middle side */}
-          <div className="flex items-center gap-2" >
+          {!isMobile && <div className="flex flex-1 items-center gap-2" >
             <SearchForm />
-          </div>
+          </div>}
           {/* Right side */}
-          <div className="flex items-center gap-4">
+          {!isMobile && <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               {/* ThemeSwitch */}
               <ThemeSwitch />
@@ -208,7 +215,7 @@ export const AppHeader = React.forwardRef<HTMLElement, Navbar05Props>(
               />
             </div>
             <UserMenu userName={user.name} userEmail={user.email} userAvatar={user.avatar}/>
-          </div>
+          </div>}
         </div>
       </header>
     );
