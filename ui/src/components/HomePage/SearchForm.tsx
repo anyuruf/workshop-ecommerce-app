@@ -20,16 +20,16 @@ function SearchForm() {
           {/* Input */}
           <Input
             type="search"
-            placeholder="Search products..."
-            className="w-full px-29 border-2 border-y-primary focus-visible:ring-[4px]"
+            placeholder="Search for products..."
+            className="w-full px-29 border-2  font-semibold text-md border-y-primary focus-visible:ring-[4px]"
           />
 
           {/* Right button */}
           <Button
             type="submit"
-            className="absolute right-0 top-0 z-10 py-2 px-4 inline-flex items-center gap-2 rounded-l-none"
+            className="absolute right-0 top-0 z-10 font-semibold text-md py-2 px-4 inline-flex items-center gap-1 rounded-l-none"
           >
-            <Search className="w-4 h-4" />
+            <Search strokeWidth={3} className="w-4 h-4" />
             <span>Search</span>
           </Button>
         </div>
@@ -46,12 +46,12 @@ function CategoryPopover({ classNames }) {
         <Button
           type="button"
           className={cn(
-            "py-2 px-4 inline-flex items-center gap-2 rounded-r-none",
+            "py-2 px-4 font-semibold text-md inline-flex items-center gap-1 rounded-r-none",
             classNames,
           )}
         >
           <span>Category</span>
-          <ChevronDown className="w-4 h-4" />
+          <ChevronDown strokeWidth={3} className="w-4 h-4" />
         </Button>
       </PopoverTrigger>
 
