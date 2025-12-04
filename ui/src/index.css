@@ -147,11 +147,14 @@
 }
 
 @layer base {
-    @font-face {
-        font-family: "Playfair";   /*Can be any text*/
-        src: local("PlayfairDisplay"),
-        url("@/assets/fonts/PlayfairDisplay-VariableFont_wght.ttf") format("truetype");
-    },
+@font-face {
+    font-family: "Buenard";   /*Can be any text*/
+    font-style: normal;
+    font-weight: 100 900; /* variable-range */
+    font-display: swap;
+    src: local("Buenard"),
+    url("@/assets/fonts/Buenard-VariableFont_wght.ttf") format("truetype");
+},
   * {
     @apply border-border outline-ring/50;
   }
@@ -161,7 +164,7 @@
 }
 
 @theme {
-    --font-primary: 'playfair', sans-serif;
+    --font-primary: 'Buenard', 'sans-serif';
 }
 
 /*---break---*/
