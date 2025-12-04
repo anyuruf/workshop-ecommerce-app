@@ -14,13 +14,13 @@ function TooltipProvider({ delayDuration = 0, ...props }) {
   );
 }
 
-const Tooltip = forwardRef(({ ...props }, ref) => {
+const Tooltip = ({ ...props }) => {
   return (
     <TooltipProvider>
-      <TooltipPrimitive.Root data-slot="tooltip" ref={ref} {...props} />
+      <TooltipPrimitive.Root data-slot="tooltip"  {...props} />
     </TooltipProvider>
   );
-});
+}
 
 function TooltipTrigger({ ...props }) {
   return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />;

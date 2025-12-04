@@ -33,7 +33,7 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
+  } as const
 )
 
 /********** Add forwardRef make the button clickable **********/
