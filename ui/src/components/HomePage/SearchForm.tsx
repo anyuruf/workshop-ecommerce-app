@@ -14,7 +14,7 @@ function SearchForm() {
     <>
       {/* flex classes are for the parent container */}
       <form className="gap-4 justify-center flex-grow hidden md:flex">
-        <div className="relative w-full max-w-md">
+        <div className="relative w-full max-w-xl">
           {/* Left Button/Popover. top-0 for (top-1/2 -translate-y-1/2) */}
           <CategoryPopover classNames="absolute left-0 top-0" />
           {/* Input */}
