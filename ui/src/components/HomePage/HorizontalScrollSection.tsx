@@ -11,12 +11,13 @@ import { Image } from "@unpic/react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import ProductCard from "@/components/HomePage/ProductCard/ProductCard";
 import SlimProductCard from "@/components/HomePage/ProductCard/SlimProductCard";
+import { GradientText } from "@/components/shadcn-io/GradientText";
 
 export default function HorizontalScrollSection() {
 
   return (
     <section className="grid grid-cols max-w-7xl mx-auto gap-2 md:gap-4">
-      <h2 className="text-4xl font-bold px-2 text-shadow-md">Featured Products</h2>
+      <GradientText className="text-4xl font-bold px-2 text-shadow-md" text="Featured Products" />
       <div className="w-full flex justify-center">
         <Carousel
           opts={{
