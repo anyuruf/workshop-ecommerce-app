@@ -69,12 +69,14 @@ export const AppHeader = React.forwardRef<HTMLElement, NavbarProps>(
   ) => {
     const [isMobile, setIsMobile] = useState(false);
     const containerRef = useRef<HTMLElement>(null);
+    // Don't show mobile nav when side open
+    const { open } = useSidebar();
 
     useEffect(() => {
       const checkWidth = () => {
         if (containerRef.current) {
           const width = containerRef.current.offsetWidth;
-          setIsMobile(width < 1024); // 768px is md breakpoint
+          setIsMobile((width < 1224) && !open); // 768px is md breakpoint
         }
       };
 
@@ -88,7 +90,7 @@ export const AppHeader = React.forwardRef<HTMLElement, NavbarProps>(
       return () => {
         resizeObserver.disconnect();
       };
-    }, []);
+    }, [open]);
 
     // Combine refs
     const combinedRef = React.useCallback((node: HTMLElement | null) => {
@@ -100,9 +102,6 @@ export const AppHeader = React.forwardRef<HTMLElement, NavbarProps>(
         ref.current = node;
       }
     }, [ref]);
-
-    // Show Logo when side closed
-    const { open } = useSidebar();
 
     const user = {
       name: "anyuruf",
