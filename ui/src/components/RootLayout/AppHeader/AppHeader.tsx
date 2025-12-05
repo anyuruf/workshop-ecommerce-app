@@ -1,12 +1,5 @@
 import * as React from 'react';
 import { useEffect, useState, useRef } from 'react';
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-} from '@/components/ui/navigation-menu';
-
 import { InfoMenu } from '@/components/RootLayout/AppHeader/InfoMenu';
 import { UserMenu } from '@/components/HomePage/Header/UserMenu';
 import { cn } from '@/lib/utils';
@@ -68,7 +61,7 @@ export const AppHeader = React.forwardRef<HTMLElement, NavbarProps>(
     ref
   ) => {
     const [isMobile, setIsMobile] = useState(false);
-    const containerRef = useRef<HTMLElement>(null);
+    const containerRef = useRef<HTMLElement | null>(null);
     // Don't show mobile nav when side open
     const { open } = useSidebar();
 
@@ -113,14 +106,14 @@ export const AppHeader = React.forwardRef<HTMLElement, NavbarProps>(
       <header
         ref={combinedRef}
         className={cn(
-          'sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 md:px-6 [&_*]:no-underline',
+          'sticky top-0 z-50 w-full max-w-9xl border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-6 [&_*]:no-underline',
           className
         )}
         {...props}
       >
         {/* Mobile Menu */}
         { isMobile &&
-            <div className="inline-flex items-center justify-between w-full">
+            <div className="inline-flex items-center justify-between w-full max-w-8xl gap-4 px-2 py-2 sm:px-4">
               {/****Left Side - Mobile Logo ****/}
               <button
                 onClick={(e) => e.preventDefault()}
@@ -144,15 +137,15 @@ export const AppHeader = React.forwardRef<HTMLElement, NavbarProps>(
 
         {/* Desktop Menu */}
         { !isMobile &&
-          <div className="inline-flex items-center gap-2 justify-between w-full">
+          <div className="inline-flex items-center gap-2 px-2 py-3 sm:px-4 max-w-9xl justify-between w-full">
             {/****Left Side - Desktop Logo ****/}
-            <div className="inline-flex items-center">
-              <button
+            <div className="inline-flex gap-3 justify-between items-center">
+              { !open && (<button
                 onClick={(e) => e.preventDefault()}
                 className="flex items-center px-2 text-primary hover:text-primary/90 transition-colors cursor-pointer"
               >
                 {logo}
-              </button>
+              </button> )}
               <SidebarTrigger className='[&_svg]:!size-4' />
 
               {/* Navigation menu */}
@@ -165,8 +158,9 @@ export const AppHeader = React.forwardRef<HTMLElement, NavbarProps>(
             </div>
 
             {/* Right side */}
-            <div className="inline-flex items-center">
+            <div className="inline-flex gap-1 items-center">
               {/* ThemeSwitch */}
+
               <ThemeSwitch />
 
               {/* Info menu */}
