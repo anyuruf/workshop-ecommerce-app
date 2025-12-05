@@ -1,37 +1,28 @@
 import * as React from 'react';
 import { useEffect, useState, useRef } from 'react';
-import { Button } from '@/components/ui/button';
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-} from '@/components/ui/navigation-menu';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
 import { InfoMenu } from '@/components/RootLayout/AppHeader/InfoMenu';
 import { UserMenu } from '@/components/HomePage/Header/UserMenu';
 import { cn } from '@/lib/utils';
 import OutletLogoSVG from "@/components/HomePage/Header/OutletLogoSVG";
-import HamburgerIconSVG from "@/components/HomePage/Header/HamburgerIconSVG";
 import { NotificationMenu } from "@/components/RootLayout/AppHeader/NotificationMenu";
 import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
 import SearchForm from "@/components/HomePage/SearchForm";
 import ThemeSwitch from "@/components/Theme/switch-toggle";
+import { Search } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import MobilePopNav from "@/components/shadcn-studio/blocks/mobile-pop-nav";
+import DesktopNav from "@/components/shadcn-studio/blocks/desktop-nav";
 
 
-export interface Navbar05NavItem {
+export interface NavbarNavItem {
   href?: string;
   label: string;
 }
 
-export interface Navbar05Props extends React.HTMLAttributes<HTMLElement> {
+export interface NavbarProps extends React.HTMLAttributes<HTMLElement> {
   logo?: React.ReactNode;
   logoHref?: string;
-  navigationLinks?: Navbar05NavItem[];
+  navigationLinks?: NavbarNavItem[];
   userName?: string;
   userEmail?: string;
   userAvatar?: string;
@@ -43,14 +34,14 @@ export interface Navbar05Props extends React.HTMLAttributes<HTMLElement> {
 }
 
 // Default navigation links
-const defaultNavigationLinks: Navbar05NavItem[] = [
+const defaultNavigationLinks: NavbarNavItem[] = [
   { href: '#', label: 'Home' },
   { href: '#', label: 'Great Deals' },
   { href: '#', label: 'Sell' },
   { href: '#', label: 'My Outlet' },
 ];
 
-export const AppHeader = React.forwardRef<HTMLElement, Navbar05Props>(
+export const AppHeader = React.forwardRef<HTMLElement, NavbarProps>(
   (
     {
       className,
@@ -70,13 +61,15 @@ export const AppHeader = React.forwardRef<HTMLElement, Navbar05Props>(
     ref
   ) => {
     const [isMobile, setIsMobile] = useState(false);
-    const containerRef = useRef<HTMLElement>(null);
+    const containerRef = useRef<HTMLElement | null>(null);
+    // Don't show mobile nav when side open
+    const { open } = useSidebar();
 
     useEffect(() => {
       const checkWidth = () => {
         if (containerRef.current) {
           const width = containerRef.current.offsetWidth;
-          setIsMobile(width < 1028); // 768px is md breakpoint
+          setIsMobile((width < 1224) && !open); // 768px is md breakpoint
         }
       };
 
@@ -90,7 +83,7 @@ export const AppHeader = React.forwardRef<HTMLElement, Navbar05Props>(
       return () => {
         resizeObserver.disconnect();
       };
-    }, []);
+    }, [open]);
 
     // Combine refs
     const combinedRef = React.useCallback((node: HTMLElement | null) => {
@@ -103,9 +96,6 @@ export const AppHeader = React.forwardRef<HTMLElement, Navbar05Props>(
       }
     }, [ref]);
 
-    // Show Logo when side closed
-    const { open } = useSidebar();
-
     const user = {
       name: "anyuruf",
       email: "anyuruf@anyuruf.net",
@@ -116,18 +106,15 @@ export const AppHeader = React.forwardRef<HTMLElement, Navbar05Props>(
       <header
         ref={combinedRef}
         className={cn(
-          'sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 md:px-6 [&_*]:no-underline',
+          'sticky top-0 z-50 w-full max-w-9xl border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-6 [&_*]:no-underline',
           className
         )}
         {...props}
       >
-        <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between gap-1 md:gap-4">
-          {/* Left side */}
-          <div className="flex items-center gap-1 w-full xl:w-auto">
-            {/****Mobile Logo ****/}
-            <div className="inline-flex items-center justify-between w-full">
-            { isMobile &&
-              <>
+        {/* Mobile Menu */}
+        { isMobile &&
+            <div className="inline-flex items-center justify-between w-full max-w-8xl gap-4 px-2 py-2 sm:px-4">
+              {/****Left Side - Mobile Logo ****/}
               <button
                 onClick={(e) => e.preventDefault()}
                 className="flex items-center px-2 text-primary hover:text-primary/90 transition-colors cursor-pointer"
@@ -135,88 +122,59 @@ export const AppHeader = React.forwardRef<HTMLElement, Navbar05Props>(
                 {logo}
               </button>
 
-            {/* Mobile menu trigger */}
-
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    className="group h-9 w-9 hover:bg-accent hover:text-accent-foreground"
-                    variant="ghost"
-                    size="icon"
-                  >
-                    <HamburgerIconSVG />
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent align="start" className="w-64 p-1">
-                  <NavigationMenu className="max-w-none">
-                    <NavigationMenuList className="flex-col items-start gap-0">
-                      {navigationLinks.map((link, index) => (
-                        <NavigationMenuItem key={index} className="w-full">
-                          <button
-                            onClick={(e) => {
-                              e.preventDefault();
-                              if (onNavItemClick && link.href) onNavItemClick(link.href);
-                            }}
-                            className="flex w-full items-center rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground cursor-pointer no-underline"
-                          >
-                            {link.label}
-                          </button>
-                        </NavigationMenuItem>
-                      ))}
-                    </NavigationMenuList>
-                  </NavigationMenu>
-                </PopoverContent>
-              </Popover>
-              </>
-            }
+              {/****Right Side - Mobile Menu Search ****/}
+              <div className="inline-flex gap-1 md:gap-2 items-center">
+                <Button
+                  type="button"
+                  className="font-semibold text-md p-0 h-7 w-8 inline-flex items-center justify-betweeen"
+                >
+                  <Search size={2} strokeWidth={2} />
+                </Button>
+                <MobilePopNav navigationLinks={navigationLinks} />
               </div>
-            {/* Main nav */}
-            <div className="md:flex hidden items-center gap-2">
-
-              { !isMobile && <SidebarTrigger className='[&_svg]:!size-4' /> }
-              {/* Navigation menu */}
-              {!isMobile && (
-                <NavigationMenu className="flex">
-                  <NavigationMenuList className="gap-1">
-                    {navigationLinks.map((link, index) => (
-                      <NavigationMenuItem key={index}>
-                        <NavigationMenuLink
-                          href={link.href}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            if (onNavItemClick && link.href) onNavItemClick(link.href);
-                          }}
-                          className="text-muted-foreground hover:text-primary py-1.5 text-md font-semibold transition-colors cursor-pointer group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
-                        >
-                          {link.label}
-                        </NavigationMenuLink>
-                      </NavigationMenuItem>
-                    ))}
-                  </NavigationMenuList>
-                </NavigationMenu>
-              )}
             </div>
-          </div>
-          {/* Middle side */}
-          {!isMobile && <div className="flex flex-1 items-center gap-2" >
-            <SearchForm />
-          </div>}
-          {/* Right side */}
-          {!isMobile && <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
+        }
+
+        {/* Desktop Menu */}
+        { !isMobile &&
+          <div className="inline-flex items-center gap-2 px-2 py-3 sm:px-4 max-w-9xl justify-between w-full">
+            {/****Left Side - Desktop Logo ****/}
+            <div className="inline-flex gap-3 justify-between items-center">
+              { !open && (<button
+                onClick={(e) => e.preventDefault()}
+                className="flex items-center px-2 text-primary hover:text-primary/90 transition-colors cursor-pointer"
+              >
+                {logo}
+              </button> )}
+              <SidebarTrigger className='[&_svg]:!size-4' />
+
+              {/* Navigation menu */}
+              <DesktopNav navigationLinks={navigationLinks} />
+            </div>
+
+            {/****In the Middle - Search form ****/}
+            <div className="flex w-full px-3 items-center justify-center">
+              <SearchForm />
+            </div>
+
+            {/* Right side */}
+            <div className="inline-flex gap-1 items-center">
               {/* ThemeSwitch */}
+
               <ThemeSwitch />
+
               {/* Info menu */}
               <InfoMenu onItemClick={onInfoItemClick} />
+
               {/* Notification */}
               <NotificationMenu
                 notificationCount={notificationCount}
                 onItemClick={onNotificationItemClick}
               />
+              <UserMenu userName={user.name} userEmail={user.email} userAvatar={user.avatar}/>
             </div>
-            <UserMenu userName={user.name} userEmail={user.email} userAvatar={user.avatar}/>
-          </div>}
-        </div>
+          </div>
+        }
       </header>
     );
   }

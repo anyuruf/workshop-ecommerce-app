@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 
 export default function HomePage() {
   return (
-    <main>
+    <main className="mx-auto max-w-7xl">
       {/* Sticky Header */}
         <HeroHeader />
 
